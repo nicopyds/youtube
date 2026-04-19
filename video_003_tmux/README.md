@@ -80,6 +80,33 @@ nada así que vamos a cambiarlo de nombre.
 Para cambiar, puedo usar el comando `PREFIX + ,`, pongo el nombre que quiero y le doy
 al enter.
 
+Lo mismo ahora lo vamos a hacer con la otra ventana.
+
+Para navegar entre diferentes ventanas, puedo usar el siguiente comando `PREFIX + n` o
+`PREFIX + p`. n es next y p es previous por tanto puedo navegar hacía adelante o hacía
+atrás.
+
+Vamos a crear ahora otra ventana, `PREFIX + c`, le damos el nombre de servers y vamos
+a aprovechar para introducit los panes de `tmux`.
+
+Los panes permiten dividir una ventana en otras más pequeñas para organizar tu trabajo
+en otras sub-áreas más pequeñas. Si quiero dividir una ventana verticalmente, lo puedo
+hacer con el comando `PREFIX + %`.
+
+Ahora mismo tengo 2 paneles iguales y voy a aprovecar para dividir este panel en otros
+más pequeños. Para hacer la división horizontal, puedo utilizar el comando de 
+`PREFIX + "`.
+
+Para navegar ahora entre los paneles que tengo en 1 ventana, voy a utilizar el comando
+`PREFIX + o` para navegar hacía adelante o `PREFIX + ;` para navegar hacia atrás.
+
+Para que nadie se pierda, vamos a hacer una recapitulación: estamos dentro de una 
+sesión de tmux llamda `main` donde tengo 3 ventanas llamadas: `python, vi y servers` y
+en la ventana de servers tengo 3 paneles.
+
+
+
+
 
 
 
