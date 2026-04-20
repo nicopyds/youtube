@@ -1,3 +1,5 @@
+----
+
 Hola amigos, ¿que tal todo?
 
 Bienvenidos a un nuevo video.
@@ -7,7 +9,7 @@ tecnologías y herramientas que incorporé en mi flujo de trabajo y que han aume
 mucho mi productividad en el último año y medio.
 
 Hoy veremos una herramienta que vosotros podéis incorporar con mucha facilidad porque 
-es muy sencilla. Únicamente a a requerir aprenderse unos atajos y comandos.
+es muy sencilla. Únicamente a a requerir aprenderse unos cuantos atajos y comandos.
 
 En el siguiente video veremos una herramienta que tiene una curva de aprendizaje más 
 pronunciada y por último veremos una tecnologia muy potente pero también cambiante 
@@ -21,6 +23,8 @@ Tened en cuenta que yo estoy en un Mac, pero estos mismos atajos están disponib
 para Windows y Linux.
 
 Empecemos.
+
+----
 
 La herramienta de hoy se llama `tmux` y es un gestor de ventanas muy potentes de la
 terminal. Permite acomodar cualquier flujo de trabajo y navegar muy rápido entre 
@@ -41,8 +45,10 @@ Era la solución que usaba yo antes de descubrir tmux. Es algo más cómodo que 
 anterior pero implica muchas veces usar el ratón para cambiar entre ventana y esto
 puede realentizar tu trabajo.
 
-Tmux soluciona todo esto, pero antes de verlo, debemos mencionar 3 conceptos clave y 
-estos son:
+----
+
+Tmux soluciona todo esto con mucha elegancia, pero para entender correctamente su 
+funcionamiento, debemos mencionar 3 conceptos clave y estos son:
 1. Sesiones.
 2. Ventanas.
 3. Panes o Paneles.
@@ -83,8 +89,8 @@ nada así que vamos a cambiarlo de nombre.
 Para cambiar, puedo usar el comando `PREFIX + ,`, pongo el nombre que quiero y le doy
 al enter. Yo la he llamado python.
 
-Lo mismo ahora lo vamos a hacer con la otra ventana, pero antes me debo desplazar a
-esta venta. 
+Vamos a hacer lo mismo con la otra ventana, pero antes, me debo desplazar hasta esta
+ventana. <Cambiamos el nombre a vi>
 
 Para navegar entre diferentes ventanas, puedo usar el siguiente comando `PREFIX + n` o
 `PREFIX + p`. n es next y p es previous por tanto puedo navegar hacía adelante o hacía
@@ -104,24 +110,68 @@ más pequeños. Para hacer la división horizontal, puedo utilizar el comando de
 Para navegar ahora entre los paneles que tengo en 1 ventana, voy a utilizar el comando
 `PREFIX + o` para navegar hacía adelante o `PREFIX + ;` para navegar hacia atrás.
 
+Dentro de cada uno de estos paneles, voy a abrir una nuevo servidor para que puedan
+ver como `tmux` me permite concentrar mucha información en una única ventana y de esta
+manera monitorizar las diferentes aplicaciones que tengo abiertas.
+
 Antes de seguir, vamos a hacer una recapitulación: estamos dentro de una 
 sesión de tmux llamda `main` donde tengo 3 ventanas llamadas: `python, vi y servers` y
 en la ventana de servers tengo 3 paneles.
 
 Tmux me permite ver todas las sesiones y ventanas que tengo abiertas con el siguiente
-comando: `PREFIX + s`.
+comando: `PREFIX + w`.
 
 Ahora mismo, se me acaba de abrir un árbol y yo puedo verlo todo de un vistazo.
 
 Para navegar en este árbol puedo utilizar las flechas del teclado o si conocen vim, 
 puedo utilizar las teclas de navegación de vim.
 
+Puedo hacer algo parecido y ver únicamente las sesiones que tengo abiertas haciendo
+`PREFIX + s`. Para navegar puedo utilizar las flechas del ordenador (arriba y abajo).
+Y para desplegar puedo utilizar las flechas de la derecha e izquierda.
+
 Volvamos a nuestra ventana de servers porque ahora os voy a enseñar como podemos
 cambiar el tamaño de los diferentes paneles. Usando el comando `PREFIX + hjkl` yo puedo
 hacer más grande o más pequeño cada panel para ajustarlo a mis necesidades.
 
+Ahora bien, que sepan que para que esto funcione, tuve que cambiar ligeramente el
+fichero de configuración de tmux. En la descripción del vídeo y en los comentarios, 
+podrán encontrar el fichero exacto que estoy usando.
 
+Cuando yo decido cerrar un panel o ventana, lo puedo hacer con el siguiente comando:
+`exit`.
 
+Otra forma de cerrar un panel es usando el `PREFIX + x` y confirmar que queremos cerrar
+el panel.
 
+O bien, puedo usar el comando `PREFIX + &` para cerrar la ventana y todos los panes
+que existen.
 
+Si únicamente quiero salir de la sesión, lo podemos hacer usando `PREFIX & d`.
+
+Por último, mirad que voy a cerrar del todo la terminal y la vuelvo a abrir de nuevo.
+
+Resulta, que las tareas de tmux siguen ejecutándose en el background.
+
+Por tanto, me puedo volver a conectar a la sesión anterior con el comando de 
+`tmux attach -t main`.
+
+Como podéis ver, `tmux` es una herramienta muy versátil y que creo que nos puede ayudar
+a organizar mucho mejor nuestro flujo de trabajo.
+
+Os animo a que la prueben y que me pongan en los comentarios vuestra opinión.
+
+---
+
+Esto es todo por hoy. Si os ha gustado el vídeo no os olvidéis de suscribiros y darle
+al like. Esto me ayuda mucho a crecer el canal.
+
+Si creen que hay alguien que puede encontrar útil este video, compartidlo con ellos.
+
+Y si os queda alguna duda o sugerencia, poned un comentario y yo intentaré contestarlo
+cuanto antes.
+
+Cuidaros y nos vemos pronto.
+
+Chao.
 
