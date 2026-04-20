@@ -9,15 +9,16 @@ tecnologías y herramientas que incorporé en mi flujo de trabajo y que han aume
 mucho mi productividad en el último año y medio.
 
 Hoy veremos una herramienta que vosotros podéis incorporar con mucha facilidad porque 
-es muy sencilla. Únicamente a a requerir aprenderse unos cuantos atajos y comandos.
+es muy sencilla. Únicamente va a requerir aprenderse unos cuantos atajos y comandos.
 
 En el siguiente video veremos una herramienta que tiene una curva de aprendizaje más 
 pronunciada y por último veremos una tecnologia muy potente pero también cambiante 
-y que yo uso cada día.
+y que yo estoy seguro que todos la utilizamos a diario. 
 
-Dado que veremos muchos atajos de teclado, voy a activar el `KeyCaster` 
-así que a partir de ahora, deberían ver abajo a la izquierda todo lo que escribo en mi 
-teclado.
+Dado que hoy veremos muchos atajos de teclado, voy a activar el `KeyCaster`.
+
+El KeyCaster es un programa que va a mostrar en la pantalla todos y cada uno de los 
+inputs al teclado así que podrán ver en todo momento lo que escribo.
 
 Tened en cuenta que yo estoy en un Mac, pero estos mismos atajos están disponibles 
 para Windows y Linux.
