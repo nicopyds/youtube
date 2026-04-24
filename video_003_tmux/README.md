@@ -4,18 +4,18 @@ Hola amigos, ¿que tal todo?
 
 Bienvenidos a un nuevo video.
 
-El vídeo de hoy va a ser el primero de una serie de 3 donde voy a comentaros diferentes
-tecnologías y herramientas que incorporé en mi flujo de trabajo y que han aumentando 
-mucho mi productividad en el último año y medio.
+En el video de hoy os quiero contar sobre `tmux`, una herramienta que había aprendido
+recientemente y que ha supuesto un importante aumento de productividad.
 
-Hoy veremos una herramienta que vosotros podéis incorporar con mucha facilidad porque 
-es muy sencilla. Únicamente va a requerir aprenderse unos cuantos atajos y comandos.
+Para los que no conocen `tmux`, es un gestor de ventanas muy versátil, que se adapta
+muy fácil a cualquier flujo de trabajo.
 
-En el siguiente video veremos una herramienta que tiene una curva de aprendizaje más 
-pronunciada y por último veremos una tecnologia muy potente pero también cambiante 
-y que yo estoy seguro que todos la utilizamos a diario. 
+Es una de estas herramientas que conoces y enseguida te sientes como en casa.
 
-Dado que hoy veremos muchos atajos de teclado, voy a activar el `KeyCaster`.
+La mejor parte: `tmux` es muy fácil de aprender dado memorizando unos 10 comandos ya
+te abre todo un abanico de posibilidades.
+
+Dado que hoy veremos algunos atajos de teclado, voy a activar el `KeyCaster`.
 
 El KeyCaster es un programa que va a mostrar en la pantalla todos y cada uno de los 
 inputs al teclado así que podrán ver en todo momento lo que escribo.
@@ -27,13 +27,8 @@ Empecemos.
 
 ----
 
-La herramienta de hoy se llama `tmux` y es un gestor de ventanas muy potentes de la
-terminal. Permite acomodar cualquier flujo de trabajo y navegar muy rápido entre 
-diferentes ventanas.
-
-Antes de ver el tmux en acción, es importante simular un flujo de trabajo que muchos de 
-vosotros podrían tener en vuestro día a día por esto nos permitirá entender el 
-beneficio que trae tmux.
+Primero de todo, vamos a simular un flujo de trabajo que muchos de vosotros podrían 
+tener en vuestro día a día y esto nos ayudará a entender el beneficio que trae tmux.
 
 Supongamos que en mi flujo de trabajo yo necesito una sesión con el interpréte de
 Python, pero a la vez necesito una ventana en la terminal para otras tareas.
