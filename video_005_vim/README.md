@@ -14,7 +14,7 @@ Tomandlo más bien como un vídeo de divulgación.
 
 Mi idea es explicar que es `vim`, los motivos que me han llevado a aprender `vim` y 
 también mostrar algunos ejemplos muy sencillos que os permitan a vosotros entender
-y espero, despertar vuestra curiosidad hacia este editor.
+su potencial y espero, despertar vuestra curiosidad hacia el editor.
 
 Empecemos.
 
@@ -22,11 +22,18 @@ Empecemos.
 
 `Vim` es un editor de texto multimodal de la terminal.
 
-`Vim` su antecesor `vi` y el antecesor de este `ed` datan desde 1971 y esto los hace
-uno de los programas más antiguos aún utilizados a día de hoy.
+Sus raíces se remotan a 1971 con la creación por parte de Ken Thompson 
+(por cierto: el co-creador de Unix) del editor de texto `ed`.
 
-En el Developer Surver de 2025, vim y la nueva versión neovim aparecen como los editores
-de texto más utilizados hoy en día.
+Posteriormente en 1976, Bill Joy creó `vi` basandosé en `ed` y en 1992 Bram Moolenaar
+publicó `Vim`.
+
+La última incorporación a la familia de `Vim` es `Neovim`, un fork de `Vim` pero con
+algunos cambios relevantes como sustitución de VimScript por Lua, un look mucho más 
+moderno entre otros.
+
+En el Developer Surver de 2025, `Vim` y la nueva versión `Neovim` aparecen como los 
+editores de texto más utilizados hoy en día.
 
 En la sección de los editores de texto/ides más admirados, neovim se lleva el primer 
 puesto con mucha diferencia.
@@ -34,6 +41,11 @@ puesto con mucha diferencia.
 https://survey.stackoverflow.co/2025/technology#most-popular-technologies-dev-envs-dev-envs-prof
 
 ----
+
+Que es lo que hace tan especial a 
+
+----
+
 
 Esto es todo por hoy. Si os ha gustado el vídeo no os olvidéis de suscribiros y darle
 al like. Esto me ayuda mucho a crecer el canal.
