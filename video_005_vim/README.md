@@ -27,18 +27,20 @@ Sus raíces se remotan a 1971 con la creación por parte de Ken Thompson
 
 Posteriormente en 1976, Bill Joy creó `vi` basándose en el código de Ken Thompson.
 
-Tenemos que hacer un salto de más de 15 años, hasta que en 1992 cuando Bram Moolenaar 
+Tenemos que hacer un salto de más de 15 años, hasta que en 1992 Bram Moolenaar 
 publicó `Vim`: un acrónimo de vi improved.
 
 La última incorporación a la familia de `Vim` es `Neovim`, un fork de `Vim` pero con
-algunos cambios relevantes como sustitución de VimScript por Lua, un look mucho más 
-moderno entre otros. 
+algunos cambios relevantes como la sustitución de VimScript (un lenguaje de 
+programación arcaico del propio `vim`) por Lua (un lenguaje scripting mucho versátil), 
+un lavado de cara mucho más moderno entre otras cosas.
 
 Actualmente `NeoVim` tiene casi a 100k estrellas en GitHub haciendolo uno de los 
 proyectos más populares en la plataforma.
 
 Como podéis apreciar, `Vim`, después de 50 años, no sólo sigue vivo sino que cuenta 
-con una comunidad muy entusiasta de usuarios y muchas contribuciones y mejoras constantes.
+con una comunidad muy entusiasta de usuarios que hacen muchas contribuciones y se 
+añaden mejoras constantes.
 
 Para que vean el amor que sienten los usuarios de `Vim` hacia el editor, 
 en el Developer Survey de StackOverflow de 2025, `Vim` y `Neovim` aparecen como los 
@@ -47,6 +49,8 @@ editores de texto más utilizados hoy en día.
 En la sección de los editores de texto/IDES más admirados, `Neovim` se lleva el primer 
 puesto con mucha diferencia.
 
+https://survey.stackoverflow.co/2025/technology#most-popular-technologies-dev-envs-dev-envs-prof
+
 ----
 
 ¿Que es lo que hace que `Vim` sea tan especial?
@@ -54,7 +58,8 @@ puesto con mucha diferencia.
 Os expondré los principales motivos:
 1. Vim es ubicuo. 
 1. Vim es rápido.
-1. Vim te hace sentir guay. 
+1. Vim te hace sentir guay. Bromas aparte, `vim` te empuja a mejorar y aprender nuevas
+cosas constantemente.
 
 El primer motivo para mi es el más relevante y es el que me llevó a aprender `Vim`.
 
@@ -66,7 +71,7 @@ homologación de software suele ser muy lento y la mayoría acaban en un `no` po
 equipo de seguridad.
 
 Además, a esto se suma que tengo que trabajar en diferentes entornos: máquina de Windows 
-en local, servidor OnPremise que corre Linux y tamibén en 2 entornos diferentes en 
+en local, servidor OnPremise que corre Linux y también en 2 entornos diferentes en 
 Google Cloud.
 
 El problema consiste que los entornos están muy fragmentados. En algunos entornos puedes 
@@ -109,8 +114,8 @@ en muchos casos es el editor de texto por defecto.
 
 Pero aprender `Vim` no es fácil, requiere tiempo y paciencia.
 
-La curva de aprendizaje puede llegar a ser bastante pronunciada pero creo que a la larga
-es una inversión que vale la pena hacer.
+La curva de aprendizaje puede llegar a ser bastante pronunciada porque `vim` hace las 
+cosas a su manera: the vim way.
 
 Una cosa que yo tuve que cambiar nada más empezar es aprender a escribir con las dos manos.
 
@@ -118,32 +123,35 @@ Cuando usas Vim, casi no usas el ratón, toda la navegación y toda la edición 
 a través atajos y las teclas del teclado. Para algunos esto puede ser un rollo, a mi 
 en cambio esto me encanta.
 
-Ahora bien, para ser eficiente, debes escribir correctamente y aquí tuve que "reeducar"
+# mirar esto bien
+<Ahora bien, para ser eficiente, debes escribir correctamente y aquí tuve que "reeducar"
 mi forma de usar el teclado. Lo que quiero decir con esto es usar los diez dedos, tener
-escribir correctamente.
+escribir correctamente.>
 
 Si el concepto de "fila guía o fila central" es algo nuevo para ti, lo más probable es 
 que estas en la misma situación en la que yo me encontraba.
 
-Un cosa que me ayudó mucho es la página web de https://www.edclub.com/sportal/ que tiene
-un montón de cursos de mecanografía tanto en inglés como en español.
+Un cosa que me ayudó mucho es la página web 
+https://www.edclub.com/sportal/
+que tiene un montón de cursos de mecanografía tanto en inglés como en español.
 
 Además, el diseño de los cursos es muy intuivo y visual: engancha enseguida y se hace
 muy liviano seguir los tutoriales.
 
-Yo no obstante, no llegué a completar todo el curso pero tampoco hace falta, en cuanto 
-empiezas a notar que escribes más rápido, usando los diez dedos y te sientes cómodo 
-puedes parar el curso de mecanografía.
+Yo no llegué a completar todo el curso pero tampoco hace falta, en cuanto 
+empiezas a notar que escribes más rápido, usas los diez dedos y te sientes cómodo, 
+no necesitas mirar el teclado para buscar una tecla puedes parar el curso de mecanografía
+y pasar a aprender `vim`.
 
 Posteriormente, usé los siguientes recursos para aprender:
 1. El libro de `Practical Vim`.
-2. El tutorial oficial de `Vim` que se puede activar con el comando de: vimtutor
+2. El tutorial oficial de `Vim` que se puede activar con el comando de: <vimtutor>
 3. Y los siguientes tutoriales online:
     - https://www.youtube.com/watch?v=XA2WjJbmmoM
     - https://www.youtube.com/watch?v=wlR5gYd6um0
     - https://www.youtube.com/watch?v=_NUO4JEtkDw
 
-Con estos recursos y trás un mes y pico de práctica, `Vim` poco a poco empezaba a formar
+Con estos recursos y tras casi 2 meses de práctica, `Vim` poco a poco empezaba a formar
 parte de mi día a día.
 
 ----
@@ -154,13 +162,14 @@ Para mi la respuesta es que sí. Porque una vez que te manejas bien con `Vim` em
 a ser muy rápido. Y aquí os quiero mostrar algunos ejemplos.
 
 Lo primero mirad que estoy dentro de la terminal y puedo ejecutar `vim --version` y 
-veo que tengo `vim` instalado. 
+veo que tengo `vim` instalado. Como podéis observar yo voy a tirar de `Neovim` pero esto
+mismo lo tienen para `vim`.
 
-Para aquellos que están en Windows, os recomiendo que instalen `vim` o bien `Gitbash` y
-usen `vim` desde su terminal.
+Para aquellos que están en Windows, os recomiendo que instalen `vim` desde la página 
+oficinal o bien `Gitbash` y usen `vim` desde la terminal del `Gitbash`.
 
 Si yo ejecuto `vim` a secas entro dentro del programa de `vim` y puedo ver algunas 
-opciones.
+opciones: como por ejemplo el manual de ayuda.
 
 Para salir del programa debo escribir `:q`.
 
@@ -170,20 +179,21 @@ abrir un fichero y probar a editarlo.
 Si escribo `vim <nombre_fichero>` puedo empezar a editarlo.
 
 Antes os había comentado que `vim` es un editor multimodal. Esto quiere decir que para
-diferentes "tareas o flujos de trabajo" suele haber un modo especial.
+diferentes "tareas o flujos de trabajo" suele haber un modo especial optimizado para
+esta tarea.
 
-Si yo únicamnete quiero leer el contenido de un texto (lo que hace la mayoría de los 
-programadores (que leen mucho más código que editarlo)), `vim` proporciona el modo "normal".
+Si yo únicamnete quiero leer el contenido de un texto `vim` proporciona el modo "normal".
 
 Esto quiere decir que yo ahora mismo puedo navegar por este fichero, me puedo desplazar
 pero no lo puedo modificar.
 
 Fijaos en la diferencia con respecto a `Word` o `Visual Studio Code` es relevante: el 
 modo normal en `vim` es de lectura y en cambio en la inmensa mayoría de otros 
-programas cuando abres un fichero inmediatamente lo puedes editar. 
+programas cuando abres un fichero inmediatamente lo puedes editar o insertar texto en 
+él.
 
-Esto otra vez tiene que ver con que los creadores de `vim` saben que la mayoría de las
-veces, lees un fichero mucho más a menudo que lo editas.
+Esto tiene que ver con que los creadores de `vim` saben que la mayoría de las veces, 
+lees un fichero mucho más a menudo que lo editas.
 
 Si yo quiero salir ahora de este fichero, lo hago con `:q` o `:q!`.
 
@@ -191,15 +201,6 @@ Si ahora decido abrir el fichero puedo teclar `vim <nombre_fichero> +75` y voy a
 a la línea 75.
 
 ----
-
-Soy mega fan de aprender los atajos en todas las herramientas que uso porque hace que 
-llegues a ser mucho más rápido y productivo.
-
-Si no queda claro que quiere decir `multimodal`, esperad hasta que lleguemos a la 
-sección de ejemplos y lo veréis mucho más claro.
-
-----
-
 
 Esto es todo por hoy. Si os ha gustado el vídeo no os olvidéis de suscribiros y darle
 al like. Esto me ayuda mucho a crecer el canal.
@@ -215,4 +216,3 @@ Chao.
 
 ----
 
-https://survey.stackoverflow.co/2025/technology#most-popular-technologies-dev-envs-dev-envs-prof
