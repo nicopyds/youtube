@@ -119,7 +119,11 @@ a través atajos y las teclas del teclado. Para algunos esto puede ser un rollo,
 en cambio esto me encanta.
 
 Ahora bien, para ser eficiente, debes escribir correctamente y aquí tuve que "reeducar"
-mi forma de usar el teclado.
+mi forma de usar el teclado. Lo que quiero decir con esto es usar los diez dedos, tener
+escribir correctamente.
+
+Si el concepto de "fila guía o fila central" es algo nuevo para ti, lo más probable es 
+que estas en la misma situación en la que yo me encontraba.
 
 Un cosa que me ayudó mucho es la página web de https://www.edclub.com/sportal/ que tiene
 un montón de cursos de mecanografía tanto en inglés como en español.
@@ -128,19 +132,63 @@ Además, el diseño de los cursos es muy intuivo y visual: engancha enseguida y 
 muy liviano seguir los tutoriales.
 
 Yo no obstante, no llegué a completar todo el curso pero tampoco hace falta, en cuanto 
-empiezas a notar que escribes correctamente, usando los diez dedos y te sientes 
-cómodo puedes parar el curso de mecanografía.
+empiezas a notar que escribes más rápido, usando los diez dedos y te sientes cómodo 
+puedes parar el curso de mecanografía.
 
 Posteriormente, usé los siguientes recursos para aprender:
 1. El libro de `Practical Vim`.
-2. El tutorial oficial de `Vim` que se puede activar con el comando de:
+2. El tutorial oficial de `Vim` que se puede activar con el comando de: vimtutor
 3. Y los siguientes tutoriales online:
     - https://www.youtube.com/watch?v=XA2WjJbmmoM
     - https://www.youtube.com/watch?v=wlR5gYd6um0
     - https://www.youtube.com/watch?v=_NUO4JEtkDw
 
-Con estos recursos y trás un mes y pico de práctica, `Vim` poco a poco empezaba a ser 
-una herramienta que 
+Con estos recursos y trás un mes y pico de práctica, `Vim` poco a poco empezaba a formar
+parte de mi día a día.
+
+----
+
+¿Algunos se preguntarán si esto realmente vale la pena? 
+
+Para mi la respuesta es que sí. Porque una vez que te manejas bien con `Vim` empiezas 
+a ser muy rápido. Y aquí os quiero mostrar algunos ejemplos.
+
+Lo primero mirad que estoy dentro de la terminal y puedo ejecutar `vim --version` y 
+veo que tengo `vim` instalado. 
+
+Para aquellos que están en Windows, os recomiendo que instalen `vim` o bien `Gitbash` y
+usen `vim` desde su terminal.
+
+Si yo ejecuto `vim` a secas entro dentro del programa de `vim` y puedo ver algunas 
+opciones.
+
+Para salir del programa debo escribir `:q`.
+
+`Vim` sobre todo se usa para leer o editar ficheros de texto, por este motivo vamos a 
+abrir un fichero y probar a editarlo.
+
+Si escribo `vim <nombre_fichero>` puedo empezar a editarlo.
+
+Antes os había comentado que `vim` es un editor multimodal. Esto quiere decir que para
+diferentes "tareas o flujos de trabajo" suele haber un modo especial.
+
+Si yo únicamnete quiero leer el contenido de un texto (lo que hace la mayoría de los 
+programadores (que leen mucho más código que editarlo)), `vim` proporciona el modo "normal".
+
+Esto quiere decir que yo ahora mismo puedo navegar por este fichero, me puedo desplazar
+pero no lo puedo modificar.
+
+Fijaos en la diferencia con respecto a `Word` o `Visual Studio Code` es relevante: el 
+modo normal en `vim` es de lectura y en cambio en la inmensa mayoría de otros 
+programas cuando abres un fichero inmediatamente lo puedes editar. 
+
+Esto otra vez tiene que ver con que los creadores de `vim` saben que la mayoría de las
+veces, lees un fichero mucho más a menudo que lo editas.
+
+Si yo quiero salir ahora de este fichero, lo hago con `:q` o `:q!`.
+
+Si ahora decido abrir el fichero puedo teclar `vim <nombre_fichero> +75` y voy a saltar
+a la línea 75.
 
 ----
 
