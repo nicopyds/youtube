@@ -2,6 +2,8 @@
 
 Hola amigos, ¿que tal todo?
 
+Bienvenidos a un nuevo video.
+
 El vídeo de hoy va a ser una declaración de amor.
 
 En concreto, una declaración de amor a `Vim`: el mejor editor de texto de la historia.
@@ -18,7 +20,8 @@ Empecemos.
 
 ----
 
-`Vim` es un editor de texto multimodal de la terminal. 
+`Vim` es un editor de texto multimodal de la terminal. Permite manipular texto
+con muchisima velocidad y agilidad.
 
 Sus raíces se remotan a 1971 con la creación por parte de Ken Thompson 
 (por cierto: el co-creador de Unix) del editor de texto `ed`.
