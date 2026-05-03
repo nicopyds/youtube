@@ -2,8 +2,6 @@
 
 Hola amigos, ¿que tal todo?
 
-Bienvenidos a un nuevo video.
-
 El vídeo de hoy va a ser una declaración de amor.
 
 En concreto, una declaración de amor a `Vim`: el mejor editor de texto de la historia.
@@ -162,32 +160,35 @@ Para mi la respuesta es que sí. Porque una vez que te manejas bien con `Vim` em
 a ser muy rápido. Y aquí os quiero mostrar algunos ejemplos.
 
 Lo primero mirad que estoy dentro de la terminal y puedo ejecutar `vim --version` y 
-veo que tengo `vim` instalado. Como podéis observar yo voy a tirar de `Neovim` pero esto
+veis que tengo `vim` instalado. Como podéis observar yo voy a tirar de `Neovim` pero esto
 mismo lo tienen para `vim`.
 
 Para aquellos que están en Windows, os recomiendo que instalen `vim` desde la página 
-oficinal o bien `Gitbash` y usen `vim` desde la terminal del `Gitbash`.
+oficial o bien `Gitbash` y usen `vim` desde la terminal del `Gitbash`.
 
 Si yo ejecuto `vim` a secas entro dentro del programa de `vim` y puedo ver algunas 
-opciones: como por ejemplo el manual de ayuda.
+opciones: como por ejemplo el manual de ayuda y otras cosas.
 
 Para salir del programa debo escribir `:q`.
 
 `Vim` sobre todo se usa para leer o editar ficheros de texto, por este motivo vamos a 
 abrir un fichero y probar a editarlo.
 
-Si escribo `vim <nombre_fichero>` puedo empezar a editarlo.
+Si escribo `vim <nombre_fichero>` puedo empezar a editarlo. En realidad, lo que voy a
+editar es un fichero "temporal" con el contenido original. De esta manera, en cualquier
+momento puedo sobreescribir el contenido o bien descartar los cambios.
 
 Antes os había comentado que `vim` es un editor multimodal. Esto quiere decir que para
 diferentes "tareas o flujos de trabajo" suele haber un modo especial optimizado para
 esta tarea.
 
-Si yo únicamnete quiero leer el contenido de un texto `vim` proporciona el modo "normal".
+Si yo únicamente quiero leer el contenido de un texto, `vim` proporciona el modo "normal".
 
 Esto quiere decir que yo ahora mismo puedo navegar por este fichero, me puedo desplazar
-pero no lo puedo modificar.
+pero no lo puedo modificar. Para desplazarse uso la fila: "hjkl" para moverme hacía
+izquierda, abajo, arriba o bien a la derecha.
 
-Fijaos en la diferencia con respecto a `Word` o `Visual Studio Code` es relevante: el 
+Fijaos que la diferencia con respecto a `Word` o `Visual Studio Code` es relevante: el 
 modo normal en `vim` es de lectura y en cambio en la inmensa mayoría de otros 
 programas cuando abres un fichero inmediatamente lo puedes editar o insertar texto en 
 él.
