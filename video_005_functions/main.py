@@ -1,16 +1,20 @@
+#         0  1  2
+values = [2, 0, 3]
+
+# 1. Añadir documentación 
+# 2. Añadir tipado
+# 3. Validar los params de entrada
 
 def find_index(values, func):
-
     index = values.index(func(values))
-    print(values, func, index)
-
+    message = f"""
+        For this values {values}
+        and this function {func.__name__}
+        we have this output {index}
+    """
+    print(message)
     return index
 
-if __name__ == "__main__":
-    values = [1, 2, 3]
-    func = max
-    find_index(values=values, func=func)
+find_index(values=values, func=min)
+find_index(values=values, func=max)
 
-    values = [-1, 2, 3]
-    func = min
-    find_index(values=values, func=func)

@@ -4,9 +4,9 @@ Hola amigos, ¿que tal todo?
 
 Bienvenidos a un nuevo video.
 
-El vídeo de hoy me da un poco de miedo.
+El vídeo de hoy me da miedo de que vaya a ser un vídeo polémico.
 
-Espero que no vaya a ser uno polémico y es que vamos a hablar sobre funciones en Python.
+Y es que vamos a hablar sobre funciones en Python.
 
 En concreto, quiero explorar conjuntamente con vosotros que significa definir una 
 buena función en Python.
@@ -183,8 +183,19 @@ Siguiente mejora clave que podemos hacer a nuestra función es añadir tipado.
 Los `type annotations` fueron agregados en Python en el año 2015 con el release de Python 3.5. 
 
 Y aunque Python sigue y seguirá siendo un lenguaje dinámicamente tipado, los tipos 
-han supuesto importantes mejoras para los developers.
+han supuesto importantes mejoras de productividad para los developers.
 
+Voy a enumerar sólo algunos:
+1. Permiten hacer análisis estático del código con herramientas como `mypy` y 
+de esta manera de reducen los posibles bugs en el sistema.
+2. Mejora mucho el entendimiento de nuestro código dado que es un excelente complemento
+a la documentación. Al expresar explicitamente los tipos, el programador piensa mucho
+más en el funcionamiento del código y hace un esfuerzo en implementarlo mejor.
+3. Los IDEs como VSCode y otros, se apoyan en los tipos de nuestras funciones para ayudar
+con el autocompletado y el refactoring.
+
+Además de que los tipos ayudan a también a los agentes los LLMs a entender mucho mejor
+las intenciones de nuestro código.
 
 ```python
 def find_index(values, func):
