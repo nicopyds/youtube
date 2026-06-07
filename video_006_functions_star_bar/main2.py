@@ -2,7 +2,7 @@ from typing import Union
 
 values = [2, 0, 3]
 
-def find_index(values:list, /, func:Union[min, max], *, verbose:bool) -> int:
+def find_index(values:list, func:Union[min, max], verbose:bool) -> int:
     """Returns the index of the maximum or minimum value in a list.
     
     Args:
@@ -29,14 +29,4 @@ def find_index(values:list, /, func:Union[min, max], *, verbose:bool) -> int:
     return index
 
 find_index(values, func=max, verbose=True)
-find_index(values, max, verbose=True)
-
-try:
-    find_index(values=values, func=max, verbose=True)
-except Exception as e:
-    print(e)
-
-try:
-    find_index(values, max, True)
-except Exception as e:
-    print(e)
+find_index(values, verbose=True, func=max)
