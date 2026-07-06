@@ -165,7 +165,7 @@ funcionalidades estamos hablando de añadir un método a nuestra clase.
 Dado que en nuestro caso, queremos replicar el StandardScaler vamos a añadir el método
 de fit.
 
-Acordamos que hemos quedado, en que en el método fit, lo que vamos a hacer es calcular
+Acordamos que hemos quedado, que en el método fit, lo que vamos a hacer es calcular
 la media y la varianza del nuestro dataset X.
 
 Nosotros lo vamos a calcular y luego printear estos valores.
@@ -182,19 +182,35 @@ class MyCustomScaler:
 ```
 
 Quiero llamar la atención a dos cosas:
-1. Un método no es más que una función anclada/indentada a una clase de Python. 
+1. Un método no es más que una función definida dentro de una clase de Python. 
 
    Y cuando digo que es una función no estoy exagerando: mirad que usamos la misma
    palabra reservada "def" que se usa para definir funciones normales de Python.
 
-   Al añadir ahora este método a MyCustomScaler, MyCustomScaler es el dueño de el y
-   lo que conseguimos es justamente organizar nuestro código. Ahora, si decido utilizar
-   este método fit, puedo recurir a MyCustomScaler e invocar el fit. Sé en todo momento
-   donde buscarla y que hace este código.
-   Como os podéis imaginar, puedo añadir todos los métodos o funcionalidades que yo 
-   quiero a esta clase.
+   La diferencia es que, al definir esta función dentro de MyCustomScaler, 
+   fit pasa a formar parte de esa clase. Esto nos permite agrupar funcionalidades 
+   relacionadas y organizar mejor nuestro código.
 
-2. 
+   Ahora, si quiero utilizar fit, sé que pertenece a MyCustomScaler.
+   Es mucho más sencillo localizar dónde está implementada esa funcionalidad y 
+   entender cuál es su propósito.
+
+   Además, una clase puede contener tantos métodos como necesitemos, 
+   cada uno encargado de una tarea concreta.
+
+2. Una segunda cosa muy importante es el primer parámetro dentro de nuestra función que
+    es el `self`. El funcionamiento exacto de `self` lo vamos a ver más adelante, pero
+    de momento quiero que os quedéis con que:
+    1. Casi siempre, un método en una clase llevará como primer parámetro self.
+    2. Este self sirve para identificar/referencia a la instancia con la que estamos 
+        trabajando.
+
+Ahora después de haber implementado esto, podemos poner a prueba nuestro código y ver
+si vamos a poder calcular correctamente la media y la varianza de nuestro dataset.
+
+Lo hacemos y vemos que tenemos el print correcto.
+
+Vamos ahora a hacer otra iteracción sobre nuestro código.
 
 ----
 Esto es todo por hoy. Si os ha gustado el vídeo no os olvidéis de suscribirse y darle
