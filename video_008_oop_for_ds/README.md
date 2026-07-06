@@ -28,8 +28,10 @@ objetos o bien que creen que es algo muy complicado: quiero tranquilizaros y
 aseguraros que es mucho más fácil de lo que parece.
 
 De hecho, si alguna vez habéis usado un `pandas DataFrame` o bien `StandardScaler de 
-scikit-learn` significa que ya habéis interactuado con una clase de Python de manera
-satisfactoria.
+scikit-learn` significa que ya habéis interactuado con una clase de Python.
+
+De hecho, muchas veces cuando usamos librerías externas de Python aprendemos a utilizar
+las clases que nos proporcionan.
 
 Como podemos ver aquí: si navegamos hasta pandas DataFrame es una clase y lo mismo
 ocurre con StandardScaler.
@@ -87,11 +89,12 @@ Tras ver este ejemplo muy sencillo: podemos intuir que vamos a tener que hacer 3
 1. Implementar una clase que tenga el método de fit donde se calcula la media y la 
    varianza.
 1. Guardar la media y la varianza para poder luego recuperar y usarla en la siguientes
-   llamadas.
-1. Implementar un método de transform dentro de nuestra clase que acepte un dataframe
-   de entrada y que utilice la media y la varianza calculada en el paso 1 para escalar
-   nuestro dataset de tal manera que la media y la desviación típica del dataset 
-   resultante sea 0 y 1 respectivamente.
+   llamadas. Esto lo hacemos sobre todo para evitar Data Leakage. Pero este tema ya nos
+   data para otro vídeo completo.
+1. Implementar un método de transform dentro de nuestra clase. Este método debe recibir 
+   dataframe de entrada y que utilice la media y la varianza calculada en el paso 
+   1 para escalar nuestro dataset de tal manera que la media y la desviación típica del 
+   dataset resultante sea 0 y 1 respectivamente.
 
 Antes de implementarlo todo con clases de Python, vamos a hacerlo con pandas para 
 asegurarnos del todo que entendemos el funcionamiento interno del StandardScaler.
@@ -111,6 +114,87 @@ Para hacer los pasos de antes con pandas es muy sencillo:
 ----
 Ahora vamos a implementar nuestro propio Transformer usando la programación orientada a
 objetos.
+
+Creo que va a ser muy fácil, porque sabemos la interfaz que tiene que tener nuestra 
+clase (usando el ejemplo de StandardScaler) y además hemos implementado con pandas todo
+el código necesario, así que de alguna manera sólo nos hace falta refactorizar y 
+organizar ligeramente nuestro código.
+
+Dicho lo anterior, para implementar una clase en Python empezamos por la palabra 
+reservada class seguida de un nombre y los dos puntos.
+
+Nosotros aquí la vamos a llamar 
+
+```python
+class MyCustomScaler:
+    pass
+
+```
+
+Enhorabuena, acabas de implementar tu primera clase.
+
+De hecho, nosotros ahora podemos instanciar un objeto de MyCustomScaler:
+
+```python
+my_scaler = MyCustomScaler()
+```
+
+El problema con nuestro código es que nuestra clase ahora mismo no sabe hacer nada.
+
+Y de hecho, una forma muy útil de ver las clases son como "organizadores de código".
+
+Es decir: la programación orientada a objetos ofrece una forma muy útil y cómoda de 
+organizar nuestro código. 
+
+Podemos agrupar funcionalidades relacionadas con un ámbito en un única clase.
+
+Pensemos por un momento en un reloj y sus posibles funcionalidades:
+1. Un reloj me debe saber dar la hora.
+2. Pero quizás una funcionalidad adicional que podría tener es descontar cuantas horas
+   quedan hasta una hora determinada.
+3. También podría tener sentido añadir otra funcionalidad que consiste en hacer 
+   transformaciones de horas a microsegundos.
+4. Y un largo etc.
+
+Fijaos que de alguna manera podría organizar todas estas funcionalidades entorno a un
+objeto reloj porque dentro de mi aplicativo esto tiene cierta lógica.
+
+Pues bien, dentro de la programación orientada a objetos, cuando hablamos de añadir
+funcionalidades estamos hablando de añadir un método a nuestra clase.
+
+Dado que en nuestro caso, queremos replicar el StandardScaler vamos a añadir el método
+de fit.
+
+Acordamos que hemos quedado, en que en el método fit, lo que vamos a hacer es calcular
+la media y la varianza del nuestro dataset X.
+
+Nosotros lo vamos a calcular y luego printear estos valores.
+
+```python
+class MyCustomScaler:
+    def fit(self, X):
+        mean_ = X.mean()
+        var_ = X.var(ddof = 0)
+
+        print(mean_)
+        print(var_)
+
+```
+
+Quiero llamar la atención a dos cosas:
+1. Un método no es más que una función anclada/indentada a una clase de Python. 
+
+   Y cuando digo que es una función no estoy exagerando: mirad que usamos la misma
+   palabra reservada "def" que se usa para definir funciones normales de Python.
+
+   Al añadir ahora este método a MyCustomScaler, MyCustomScaler es el dueño de el y
+   lo que conseguimos es justamente organizar nuestro código. Ahora, si decido utilizar
+   este método fit, puedo recurir a MyCustomScaler e invocar el fit. Sé en todo momento
+   donde buscarla y que hace este código.
+   Como os podéis imaginar, puedo añadir todos los métodos o funcionalidades que yo 
+   quiero a esta clase.
+
+2. 
 
 ----
 Esto es todo por hoy. Si os ha gustado el vídeo no os olvidéis de suscribirse y darle
