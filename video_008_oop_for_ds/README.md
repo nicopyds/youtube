@@ -7,8 +7,8 @@ En el vídeo de hoy vamos a hablar sobre Programación Orientada a Objetos: en a
 OOP.
 
 La Programación Orientada a Objetos es un tema muy largo que podríamos estar discutiendo
-durante muchos meses, en cambio en este vídeo lo vamos a enfocar desde una óptica muy
-práctica.
+durante muchos meses, en cambio en este vídeo lo vamos a enfocar desde un punto de vista
+muy práctico.
 
 El objetivo que busco es: enseñar e implementar nuestra primera clase en Python desde 
 cero.
@@ -16,9 +16,12 @@ cero.
 Por tanto, si nunca has visto una clase de Python antes, este vídeo te podrá ayudar a
 esclarecer algunos conceptos.
 
-Además, si trabajas en Data Science, Data Engineering o bien Data Analytics: el ejemplo
+Además, si trabajas en Data Science, Data Engineering o bien Data Analytics, el ejemplo
 que voy a enseñar será muy útil porque usaremos como punto de partida un Transformer de
-scikit-learn (scikit-learn es una librería muy utilizada dentro del mundo de los datos).
+scikit-learn.
+
+Para los que no conocen scikit-learn es una librería muy utilizada dentro del mundo de 
+los datos.
 
 Empecemos.
 
@@ -30,23 +33,19 @@ aseguraros que es mucho más fácil de lo que parece.
 De hecho, si alguna vez habéis usado un `pandas DataFrame` o bien `StandardScaler de 
 scikit-learn` significa que ya habéis interactuado con una clase de Python.
 
-De hecho, muchas veces cuando usamos librerías externas de Python aprendemos a utilizar
-las clases que nos proporcionan.
-
 Como podemos ver aquí: si navegamos hasta pandas DataFrame es una clase y lo mismo
-ocurre con StandardScaler.
+ocurre con StandardScaler. Por aquí de hecho podemos ver la palabra reservada class que
+nos indica que es una clase de Python.
 
-Nuestro objetivo en este vídeo será escribir una clase que haga el mismo comportamiento
-que el StandardScaler de `scikit-learn`.
-
-Es decir: learning by doing.
+Nuestro gran objetivo en este vídeo será escribir una clase tenga el mismos 
+comportamiento que el StandardScaler de `scikit-learn`.
 
 ----
-Para el resto del vídeo, yo voy a usar el entorno de trabajo de Jupyter Notebook.
+Para el resto del vídeo, yo voy a usar el entorno de trabajo de Jupyter Notebook porque
+el output es mucho más visual que no en la terminal.
 
-Si no tienes un entorno virtual de trabajo de Python creado, te dejaré un enlace a un 
-notebook de Kaggle donde de manera gratuita y sin necesidad de instalar nada, vas a 
-poder seguir con este ejemplo.
+Si tienen cualquier dificultad, ponedlo en los comentarios y os intentaré ayudar lo antes
+posible.
 
 Dicho esto, vamos a importar el StandardScaler de scikit-learn y vamos a importar pandas
 como pd.
@@ -57,7 +56,7 @@ Primero de todo: que hace el StandardScaler.
 Veamos con un ejemplo sencillo: aquí tenemos unos datos dummy dentro de un pandas 
 DataFrame.
 
-Muchas veces cuando estamos trabajando con datos, necesitamos escalar los datos.
+Muchas veces cuando estamos trabajando con datos, necesitamos estandarizar los datos.
 
 Una de las operaciones más comunes que hacemos en este caso es restar la media a un 
 dataset y luego dividir entre la desviación típica.
@@ -80,7 +79,7 @@ Si hacemos scaler.mean_ y scaler.var_ podemos ver estos valores.
 Ahora, si yo decido escalar mi dataset, puedo usar el método scaler.transform(X) y de
 esta manera obtengo un dataset escalado.
 
-Mirad como las columnas en el dataset X_scaler tienen un rango más similar.
+Mirad como las columnas en el dataset X_scaler tienen un rango más parecido.
 
 Además, si aplicamos ahora X_scaler.describe() podemos ver como la media del dataset
 resultante es cero y la desviación típica es 1.
@@ -89,15 +88,17 @@ Tras ver este ejemplo muy sencillo: podemos intuir que vamos a tener que hacer 3
 1. Implementar una clase que tenga el método de fit donde se calcula la media y la 
    varianza.
 1. Guardar la media y la varianza para poder luego recuperar y usarla en la siguientes
-   llamadas. Esto lo hacemos sobre todo para evitar Data Leakage. Pero este tema ya nos
-   data para otro vídeo completo.
+   llamadas. Esto lo hacemos sobre todo para evitar Data Leakage. Pero este tema lo 
+   veremos en un víde futuro.
 1. Implementar un método de transform dentro de nuestra clase. Este método debe recibir 
    dataframe de entrada y que utilice la media y la varianza calculada en el paso 
-   1 para escalar nuestro dataset de tal manera que la media y la desviación típica del 
-   dataset resultante sea 0 y 1 respectivamente.
+   1 y guardado en el paso 2 para escalar nuestro dataset de tal manera que la media 
+   y la desviación típica del dataset resultante sea 0 y 1 respectivamente.
 
 Antes de implementarlo todo con clases de Python, vamos a hacerlo con pandas para 
 asegurarnos del todo que entendemos el funcionamiento interno del StandardScaler.
+
+Este paso es opcional, pero nos ayudará mucho antes de entrar en la POO.
 
 ----
 Para hacer los pasos de antes con pandas es muy sencillo:
