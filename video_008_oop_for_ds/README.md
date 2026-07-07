@@ -118,8 +118,8 @@ objetos.
 
 Creo que va a ser muy fácil, porque sabemos la interfaz que tiene que tener nuestra 
 clase (usando el ejemplo de StandardScaler) y además hemos implementado con pandas todo
-el código necesario, así que de alguna manera sólo nos hace falta refactorizar y 
-organizar ligeramente nuestro código.
+el código necesario, así que sólo nos hace falta refactorizar y organizar ligeramente 
+nuestro código.
 
 Dicho lo anterior, para implementar una clase en Python empezamos por la palabra 
 reservada class seguida de un nombre y los dos puntos.
@@ -142,12 +142,16 @@ my_scaler = MyCustomScaler()
 
 El problema con nuestro código es que nuestra clase ahora mismo no sabe hacer nada.
 
+Para que MyCustomScaler sea útil, debo añadirle funcionalidades.
+
 Y de hecho, una forma muy útil de ver las clases son como "organizadores de código".
 
 Es decir: la programación orientada a objetos ofrece una forma muy útil y cómoda de 
 organizar nuestro código. 
 
 Podemos agrupar funcionalidades relacionadas con un ámbito en un única clase.
+
+Os pongo un ejemplo:
 
 Pensemos por un momento en un reloj y sus posibles funcionalidades:
 1. Un reloj me debe saber dar la hora.
@@ -189,8 +193,7 @@ Quiero llamar la atención a dos cosas:
    palabra reservada "def" que se usa para definir funciones normales de Python.
 
    La diferencia es que, al definir esta función dentro de MyCustomScaler, 
-   fit pasa a formar parte de esa clase. Esto nos permite agrupar funcionalidades 
-   relacionadas y organizar mejor nuestro código.
+   fit pasa a formar parte de esa clase.
 
    Ahora, si quiero utilizar fit, sé que pertenece a MyCustomScaler.
    Es mucho más sencillo localizar dónde está implementada esa funcionalidad y 
@@ -200,10 +203,10 @@ Quiero llamar la atención a dos cosas:
    cada uno encargado de una tarea concreta.
 
 2. Una segunda cosa muy importante es el primer parámetro dentro de nuestra función que
-    es el `self`. El funcionamiento exacto de `self` lo vamos a ver más adelante, pero
-    de momento quiero que os quedéis con que:
+    es el `self`. El funcionamiento exacto de `self` lo vamos a ver al final del video, 
+    pero de momento quiero que os quedéis con que:
     1. Casi siempre, un método en una clase llevará como primer parámetro self.
-    2. Este self sirve para identificar/referencia a la instancia con la que estamos 
+    2. Este self sirve para identificar/referenciar a la instancia con la que estamos 
         trabajando.
 
 Ahora después de haber implementado esto, podemos poner a prueba nuestro código y ver
@@ -211,7 +214,57 @@ si vamos a poder calcular correctamente la media y la varianza de nuestro datase
 
 Lo hacemos y vemos que tenemos el print correcto.
 
-Vamos ahora a hacer otra iteracción sobre nuestro código.
+Vamos a seguir y acordaos que dijimos que nuestra clase no sólo debe calcular la media
+y la varianza de un dataset sino que también la debíamos guardar en algún sitio.
+
+En el ejemplo del StandardScaler, después de llamar el fit, podemos preguntar al scaler
+cual es la media y la varianza escribiendo
+
+```python
+scaler.mean_
+scaler.var_
+```
+
+Fijaos que al escribir, no abrir paréntesis. Esta diferencia sútil indica que estoy
+delante de un atributo de la clase. Un atributo nos es más que un valor que define
+el comportamiento de esta clase. En nuestro ejemplo: esta media y varianza son atributos
+de scaler.
+
+El scaler calculó estos atributos internamente en el fit, los ha guardado en un bolsillo 
+y yo ahora cada vez que yo le pregunto cual es la media y la varianza, el scaler mete 
+la mano el bolsillo y nos dice estos valores.
+
+Evidentemente, uso el bolsillo como una metáfora lo importante es entender que debemos
+guardar en algún lugar estos valores.
+
+Dentro de nuestro método fit, ya hemos calculado esto valores así que ahora lo único que
+nos falta en guardarlos y para guardarlos lo que voy a hacer el
+
+```python
+self.mean_ = mean_
+self.var_ = var_
+```
+
+Con estas dos líneas, guardamos estos valores, si ahora ejecutamos de nuevo nuestro 
+código, podemos preguntar a nuestro my_scaler cual es la media y la varianza.
+
+Ahora vemos que tenemos un output muy parecido al StandardScaler de scikit-learn.
+
+Poco a poco nos estamos acercando a nuestro objetivo final.
+
+Una buena praxis en Python y en programación en general es que tus funciones tengan
+un return. Nosotros aquí vamos a hacer un return de self.
+
+Y fijaos que vuelve aparecer self otra vez y os prometo que al final del vídeo lo vamos
+a desmitificar pero de momento lo hacemos a implenatar así.
+
+Ojo, una nota muy importante, nosotros aquí devolvemos self porque queremos que
+nuestra clase sea compatible con scikit-learn pero en vuestra clase o proyecto quizás
+el return debe ser otra cosa. Aquí podéis devolver lo que toca y lo que se necesita.
+
+No siempre el return debe ser self. En nuestro caso esto tiene sentido y es necesario.
+
+A continuación lo que vamos a añadir es un segundo método que se llamará transform.
 
 ----
 Esto es todo por hoy. Si os ha gustado el vídeo no os olvidéis de suscribirse y darle
