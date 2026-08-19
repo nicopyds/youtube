@@ -6,15 +6,15 @@ Bienvenidos a un nuevo video.
 En el vídeo de hoy vamos a hablar sobre Programación Orientada a Objetos: en adelante
 OOP.
 
-La Programación Orientada a Objetos es un tema muy largo que podríamos estar discutiendo
+La Programación Orientada a Objetos es un tema muy largo que podríamos estar explicando
 durante muchos meses, en cambio en este vídeo lo vamos a enfocar desde un punto de vista
 muy práctico.
 
 El objetivo que busco es: enseñar a implementar nuestra primera clase en Python desde 
 cero.
 
-Por tanto, si nunca antes has visto una clase de Python, este vídeo te podrá ayudar a
-esclarecer algunos conceptos.
+Por tanto, si nunca antes has visto una clase de Python, este vídeo te ayudará a 
+esclarecer muchos conceptos.
 
 Además, si trabajas en Data Science, Data Engineering o bien Data Analytics, el ejemplo
 que voy a enseñar será muy útil porque usaremos como punto de partida un Transformer de
@@ -28,22 +28,24 @@ Empecemos.
 
 ----
 Primero de todo, para todas aquellas personas que nunca han escuchado sobre clases u 
-objetos o bien que creen que es algo muy complicado: quiero tranquilizaros y 
+objetos o bien creen que es algo muy complicado: quiero tranquilizaros y 
 aseguraros que es mucho más fácil de lo que parece.
 
 De hecho, si alguna vez habéis usado un `pandas DataFrame` o bien `StandardScaler de 
 scikit-learn` significa que ya habéis interactuado con una clase de Python.
 
-Como podemos ver aquí: si navegamos hasta pandas DataFrame es una clase y lo mismo
-ocurre con StandardScaler. Por aquí de hecho podemos ver la palabra reservada class que
-nos indica que es una clase de Python.
+Como podemos ver aquí: si navegamos hasta pandas DataFrame, un DataFrame no es más que 
+una clase y lo mismo ocurre con StandardScaler. 
 
-Nuestro gran objetivo en este vídeo será escribir una clase tenga el mismo
+Por aquí de hecho podemos ver la palabra reservada class que nos indica que es una 
+clase de Python.
+
+Nuestro gran objetivo en este vídeo será escribir una clase que tenga el mismo
 comportamiento que el StandardScaler de `scikit-learn`.
 
 ----
-Para el resto del vídeo, yo voy a usar el entorno de trabajo de Jupyter Notebook porque
-el output es mucho más visual que no en la terminal.
+Para el resto del vídeo, yo voy a usar el Jupyter Notebook porque el output es mucho 
+más visual que no en la terminal.
 
 Si tienen cualquier dificultad, ponedlo en los comentarios y os intentaré ayudar lo antes
 posible.
@@ -90,10 +92,9 @@ Tras ver este ejemplo muy sencillo: podemos intuir que vamos a tener que hacer 3
    varianza.
 1. Guardar la media y la varianza como atributos para poder luego recuperar y 
    usarlos en la siguientes llamadas. 
-   Esto lo hacemos sobre todo para evitar Data Leakage. Pero este tema lo veremos en 
-   un vídeo futuro.
+   Esto lo hacemos sobre todo para evitar Data Leakage. Pero esto es otro tema.
 1. Implementar un método de transform dentro de nuestra clase. Este método debe recibir 
-   dataframe de entrada y que utilice la media y la varianza calculada en el paso 
+   dataframe de entrada y que utilizar la media y la varianza calculada en el paso 
    1 y guardado en el paso 2 para escalar nuestro dataset de tal manera que la media 
    y la desviación típica del dataset resultante sea 0 y 1 respectivamente.
 
@@ -212,19 +213,19 @@ Quiero llamar la atención a dos cosas:
    Es mucho más sencillo localizar dónde está implementada esa funcionalidad y 
    entender cuál es su propósito.
 
-   Además, una clase puede contener tantos métodos como necesitemos, 
+   Además, una clase puede contener tantos métodos cuantos necesitamos, 
    cada uno encargado de una tarea concreta.
 
-2. Una segunda cosa muy importante es el primer parámetro dentro de nuestra función que
+2. Una segunda cosa muy importante es el primer parámetro dentro de nuestro método que
     es el `self`. El funcionamiento exacto de `self` lo vamos a ver al final del video, 
     pero de momento quiero que os quedéis con que:
     1. Casi siempre, un método en una clase llevará como primer parámetro self.
     2. Este self sirve para identificar/referenciar a la instancia con la que estamos 
         trabajando.
 
-3. Por último, una nueva cosa que quiero que sepan es que los métodos siempre implicar 
+3. Por último, una nueva cosa que quiero que sepan es que los métodos siempre implica 
    un "verbo", una acción de nuestro código: calculamos algo, medimos algo, registramos
-   en la base de datos, escalamos etc.
+   algo en la base de datos, escalamos etc.
 
    Es muy diferente a los atributos que veremos más adelante y que normalmente son 
    valores "constantes".
@@ -234,7 +235,9 @@ si vamos a poder calcular correctamente la media y la varianza de nuestro datase
 
 Lo hacemos y vemos que tenemos el print correcto.
 
-Vamos a seguir y acordaos que dijimos que nuestra clase no sólo debe calcular la media
+Vamos a seguir.
+
+Acordaos que dijimos que nuestra clase no sólo debe calcular la media
 y la varianza de un dataset sino que también la debíamos guardar en algún sitio.
 
 En el ejemplo del StandardScaler, después de llamar el fit, podemos preguntar al scaler
@@ -247,8 +250,17 @@ scaler.var_
 
 Fijaos que al escribir, no abro paréntesis. Esta diferencia sútil indica que estoy
 delante de un atributo de la clase. Un atributo nos es más que un valor que define
-el una instancia de una clase. En nuestro ejemplo: esta media y varianza son atributos
+una instancia de una clase. En nuestro ejemplo: esta media y varianza son atributos
 de scaler.
+
+Pensado que podríamos tener otro scaler, aplicado a otro dataset que tendría otra
+media y otra varianza y por tanto sería diferente.
+
+Si esto os resulta complicado, pensad en una Persona.
+
+Una persona tiene un nombre y un apellido (atributos que definen a esta persona) y luego
+una persona saber andar y hablar (son acciones que sabe realizar y por tanto son métodos
+de esta persona).
 
 El scaler calculó estos atributos internamente en el fit, los ha guardado en un cajón 
 imaginario y yo ahora cada vez que yo le pregunto cual es la media y la varianza, 
@@ -348,6 +360,7 @@ motivo lo guardo en:
 ----
 Esto es todo por hoy. Si os ha gustado el vídeo no os olvidéis de suscribirse y darle
 al like. Esto me ayuda mucho al canal.
+
 Si conocen a alguien que puede encontrar útil este video, compartidlo con ellos.
 
 Y si os queda alguna duda o sugerencia, poned un comentario y yo intentaré contestarlo
