@@ -10,18 +10,19 @@ La Programación Orientada a Objetos es un tema muy largo que podríamos estar d
 durante muchos meses, en cambio en este vídeo lo vamos a enfocar desde un punto de vista
 muy práctico.
 
-El objetivo que busco es: enseñar e implementar nuestra primera clase en Python desde 
+El objetivo que busco es: enseñar a implementar nuestra primera clase en Python desde 
 cero.
 
-Por tanto, si nunca has visto una clase de Python antes, este vídeo te podrá ayudar a
+Por tanto, si nunca antes has visto una clase de Python, este vídeo te podrá ayudar a
 esclarecer algunos conceptos.
 
 Además, si trabajas en Data Science, Data Engineering o bien Data Analytics, el ejemplo
 que voy a enseñar será muy útil porque usaremos como punto de partida un Transformer de
 scikit-learn.
 
-Para los que no conocen scikit-learn es una librería muy utilizada dentro del mundo de 
-los datos.
+Para los que no conocen: scikit-learn es una librería muy utilizada dentro del mundo de 
+Data Science y Machine Learning y ofrece un montón de herramientas para preprocesar los
+datos y entrenar modelos de Inteligencia Artificial.
 
 Empecemos.
 
@@ -37,7 +38,7 @@ Como podemos ver aquí: si navegamos hasta pandas DataFrame es una clase y lo mi
 ocurre con StandardScaler. Por aquí de hecho podemos ver la palabra reservada class que
 nos indica que es una clase de Python.
 
-Nuestro gran objetivo en este vídeo será escribir una clase tenga el mismos 
+Nuestro gran objetivo en este vídeo será escribir una clase tenga el mismo
 comportamiento que el StandardScaler de `scikit-learn`.
 
 ----
@@ -69,7 +70,7 @@ Cuando tenemos el scaler instanciado, podemos "calcular" cual es la media y la v
 de este dataset con el método de fit.
 
 Recuerden que la desviación típica es la raíz cuadrada de la varianza así que nos da lo 
-mismo calcular una o la otra.
+mismo calcular un valor u otro.
 
 Después de haber llamado el método de fit(X), podemos ahora preguntar a nuestro scaler
 cuales son los estadísticos de este dataset.
@@ -87,13 +88,20 @@ resultante es cero y la desviación típica es 1.
 Tras ver este ejemplo muy sencillo: podemos intuir que vamos a tener que hacer 3 cosas: 
 1. Implementar una clase que tenga el método de fit donde se calcula la media y la 
    varianza.
-1. Guardar la media y la varianza para poder luego recuperar y usarla en la siguientes
-   llamadas. Esto lo hacemos sobre todo para evitar Data Leakage. Pero este tema lo 
-   veremos en un víde futuro.
+1. Guardar la media y la varianza como atributos para poder luego recuperar y 
+   usarlos en la siguientes llamadas. 
+   Esto lo hacemos sobre todo para evitar Data Leakage. Pero este tema lo veremos en 
+   un vídeo futuro.
 1. Implementar un método de transform dentro de nuestra clase. Este método debe recibir 
    dataframe de entrada y que utilice la media y la varianza calculada en el paso 
    1 y guardado en el paso 2 para escalar nuestro dataset de tal manera que la media 
    y la desviación típica del dataset resultante sea 0 y 1 respectivamente.
+
+Sé que acabo de mencionar muchas cosas nuevas como: métodos y atributos, clase, fit, 
+transform etc
+
+Os pido que sigan con el vídeo porque todo esto lo iremos esclareciendo a los largo de los 
+próximos minutos.
 
 Antes de implementarlo todo con clases de Python, vamos a hacerlo con pandas para 
 asegurarnos del todo que entendemos el funcionamiento interno del StandardScaler.
@@ -144,10 +152,11 @@ El problema con nuestro código es que nuestra clase ahora mismo no sabe hacer n
 
 Para que MyCustomScaler sea útil, debo añadirle funcionalidades.
 
-Y de hecho, una forma muy útil de ver las clases son como "organizadores de código".
+Y de hecho, una forma muy útil de ver las clases en el mundo de la programación es 
+que son "organizadores de código".
 
-Es decir: la programación orientada a objetos ofrece una forma muy útil y cómoda de 
-organizar nuestro código. 
+Es decir: la programación orientada a objetos ofrece una forma muy útil, cómoda y 
+ordenada de organizar nuestro código. 
 
 Podemos agrupar funcionalidades relacionadas con un ámbito en un única clase.
 
@@ -159,10 +168,12 @@ Pensemos por un momento en un reloj y sus posibles funcionalidades:
    quedan hasta una hora determinada.
 3. También podría tener sentido añadir otra funcionalidad que consiste en hacer 
    transformaciones de horas a microsegundos.
-4. Y un largo etc.
+4. Quizás un reloj me debe poder medir la hora en diferentes zonas temporales o 
+   diferentes ciudades.
+5. Y un largo etc.
 
-Fijaos que de alguna manera podría organizar todas estas funcionalidades entorno a un
-objeto reloj porque dentro de mi aplicativo esto tiene cierta lógica.
+Fijaos que de alguna manera podría implementar todas estas funcionalidades en un
+objeto reloj porque dentro de mi aplicativo esto tiene lógica y sentido.
 
 Pues bien, dentro de la programación orientada a objetos, cuando hablamos de añadir
 funcionalidades estamos hablando de añadir un método a nuestra clase.
@@ -176,7 +187,9 @@ la media y la varianza del nuestro dataset X.
 Nosotros lo vamos a calcular y luego printear estos valores.
 
 ```python
+
 class MyCustomScaler:
+
     def fit(self, X):
         mean_ = X.mean()
         var_ = X.var(ddof = 0)
@@ -209,6 +222,13 @@ Quiero llamar la atención a dos cosas:
     2. Este self sirve para identificar/referenciar a la instancia con la que estamos 
         trabajando.
 
+3. Por último, una nueva cosa que quiero que sepan es que los métodos siempre implicar 
+   un "verbo", una acción de nuestro código: calculamos algo, medimos algo, registramos
+   en la base de datos, escalamos etc.
+
+   Es muy diferente a los atributos que veremos más adelante y que normalmente son 
+   valores "constantes".
+
 Ahora después de haber implementado esto, podemos poner a prueba nuestro código y ver
 si vamos a poder calcular correctamente la media y la varianza de nuestro dataset.
 
@@ -225,20 +245,20 @@ scaler.mean_
 scaler.var_
 ```
 
-Fijaos que al escribir, no abrir paréntesis. Esta diferencia sútil indica que estoy
+Fijaos que al escribir, no abro paréntesis. Esta diferencia sútil indica que estoy
 delante de un atributo de la clase. Un atributo nos es más que un valor que define
-el comportamiento de esta clase. En nuestro ejemplo: esta media y varianza son atributos
+el una instancia de una clase. En nuestro ejemplo: esta media y varianza son atributos
 de scaler.
 
-El scaler calculó estos atributos internamente en el fit, los ha guardado en un bolsillo 
-y yo ahora cada vez que yo le pregunto cual es la media y la varianza, el scaler mete 
-la mano el bolsillo y nos dice estos valores.
+El scaler calculó estos atributos internamente en el fit, los ha guardado en un cajón 
+imaginario y yo ahora cada vez que yo le pregunto cual es la media y la varianza, 
+el scaler abre el cajón, busca estos valores y me los muestra.
 
-Evidentemente, uso el bolsillo como una metáfora lo importante es entender que debemos
+Evidentemente, uso el cajón como una metáfora lo importante es entender que debemos
 guardar en algún lugar estos valores.
 
 Dentro de nuestro método fit, ya hemos calculado esto valores así que ahora lo único que
-nos falta en guardarlos y para guardarlos lo que voy a hacer el
+nos falta en guardarlos y para guardarlos lo que voy a hacer es lo siguiente:
 
 ```python
 self.mean_ = mean_
@@ -255,27 +275,85 @@ Poco a poco nos estamos acercando a nuestro objetivo final.
 Una buena praxis en Python y en programación en general es que tus funciones tengan
 un return. Nosotros aquí vamos a hacer un return de self.
 
+Este return de self lo que permite es hacer el "chaining" de métodos en Python, pero lo
+veremos en un vídeo especial que estoy preparando sobre este tema.
+
+Además devolvemos el self para que nuestra clase sea compatible con scikit-learn.
+
+En nuestro código y proyecto, quizás deben devolver otra cosa o no devolver nada. 
+
+Esto ya dependerá de las necesidades de vuestro proyecto.
+
 Y fijaos que vuelve aparecer self otra vez y os prometo que al final del vídeo lo vamos
-a desmitificar pero de momento lo hacemos a implenatar así.
-
-Ojo, una nota muy importante, nosotros aquí devolvemos self porque queremos que
-nuestra clase sea compatible con scikit-learn pero en vuestra clase o proyecto quizás
-el return debe ser otra cosa. Aquí podéis devolver lo que toca y lo que se necesita.
-
-No siempre el return debe ser self. En nuestro caso esto tiene sentido y es necesario.
+a desmitificar pero de momento lo implementamos así.
 
 A continuación lo que vamos a añadir es un segundo método que se llamará transform.
+
+Este método debe recibir un dataframe y reutilizar los valores de antes para estandarizar
+nuestro dataset.
+
+```python
+    def transform(self, X):
+        Xt = (X - self.mean_)/(self.var_ ** 0.5)
+        return Xt
+
+```
+
+Con esta implementación, ahora podemos enviar un `pandas.DataFrame` y estandarizar los 
+datos.
+
+Es muy relevante la línea de `self.mean_` y `self.var_`: en este momento es cuando 
+podemos decir que abrimos el cajón, recuperamos la media y la desviación típica (que
+por cierto hemos calculado antes) y la utilizamos para escalar nuestro dataset.
+
+Con esto ahora tenemos una clase ya plenamente funcional que tiene sus atributos (mean_
+y var_) y tiene sus métodos (fit y transform).
+
+----
+Vamos ahora a explicar un par de conceptos adicionales que son muy relevantes en OOP.
+
+Primera cosa: tenemos estos dos prints que constantemente escriben algo en la consola.
+
+Quizás, a nosotros nos interesa esto en el momento de desarrollo de nuestro de modelo
+pero no en producción.
+
+Nosotros por supuesto podemos añadir un nuevo parámetro dentro de fit que sea el verbose
+pero vamos a aprovechar para explicar el `__init__`.
+
+Existe un método muy especial en Python que es el primero que se invoca cuando vamos 
+a crear una instancia de una clase y se llama el constructor.
+
+En Python el constructor es el `__init__`. El propósito del constructor es recibir
+determinados atributos que van a depeterminar como se debe comportar nuestra instancia. 
+
+En nuestro caso, el valor que va a recibir nuestro constructor es el parámetro verbose
+que determinará si se deben o no printear los valores de antes.
+
+Para definir el constructor es muy fácil, es el primer método que aparece y debe llevar
+el doble guión bajo (los métodos con __ son métodos internos de Python y se conocen como
+dunder method: dunder de doble underscore).
+
+Quintando estas excentricidades, todo lo demás es como una función o método normal de 
+Python: lleva el self y los demás parámetros.
+
+Dado que yo quizás tendré que consultar más adelante el valor de verbose, lo debo
+guardar en algún sitio. ¿Os suena esto? Es el cajón que hemos definido antes por este
+motivo lo guardo en:
+
+```python
+    self.verbose = verbose
+```
+
 
 ----
 Esto es todo por hoy. Si os ha gustado el vídeo no os olvidéis de suscribirse y darle
 al like. Esto me ayuda mucho al canal.
-
 Si conocen a alguien que puede encontrar útil este video, compartidlo con ellos.
 
 Y si os queda alguna duda o sugerencia, poned un comentario y yo intentaré contestarlo
 cuanto antes.
 
-Cuidaros y nos vemos pronto.
+Cuidaros mucho y nos vemos pronto.
 
-Chao.
+Ciao.
 

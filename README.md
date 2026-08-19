@@ -20,7 +20,7 @@ Si conocen a alguien que puede encontrar útil este video, compartidlo con ellos
 Y si os queda alguna duda o sugerencia, poned un comentario y yo intentaré contestarlo
 cuanto antes.
 
-Cuidaros y nos vemos pronto.
+Cuidaros mucho y nos vemos pronto.
 
-Chao.
+Ciao.
 
