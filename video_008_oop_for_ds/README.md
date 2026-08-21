@@ -10,8 +10,8 @@ La Programación Orientada a Objetos es un tema muy largo que podríamos estar e
 durante muchos meses, en cambio en este vídeo lo vamos a enfocar desde un punto de vista
 muy práctico.
 
-El objetivo que busco es: enseñar a implementar nuestra primera clase en Python desde 
-cero.
+El objetivo que busco es muy sencillo: vamos a implementar nuestra primera clase en 
+Python desde cero.
 
 Por tanto, si nunca antes has visto una clase de Python, este vídeo te ayudará a 
 esclarecer muchos conceptos.
@@ -57,7 +57,7 @@ como pd.
 Primero de todo: que hace el StandardScaler. 
 
 Veamos con un ejemplo sencillo: aquí tenemos unos datos dummy dentro de un pandas 
-DataFrame.
+DataFrame. Una pandas DataFrame no es más que una tabla con filas y columnas.
 
 Muchas veces cuando estamos trabajando con datos, necesitamos estandarizar los datos.
 
@@ -93,8 +93,8 @@ Tras ver este ejemplo muy sencillo: podemos intuir que vamos a tener que hacer 3
 1. Guardar la media y la varianza como atributos para poder luego recuperar y 
    usarlos en la siguientes llamadas. 
    Esto lo hacemos sobre todo para evitar Data Leakage. Pero esto es otro tema.
-1. Implementar un método de transform dentro de nuestra clase. Este método debe recibir 
-   dataframe de entrada y que utilizar la media y la varianza calculada en el paso 
+1. Por último, implementar el método de transform dentro de nuestra clase. Este método debe recibir 
+   dataframe de entrada y utilizar la media y la varianza calculada en el paso 
    1 y guardado en el paso 2 para escalar nuestro dataset de tal manera que la media 
    y la desviación típica del dataset resultante sea 0 y 1 respectivamente.
 
@@ -105,7 +105,7 @@ Os pido que sigan con el vídeo porque todo esto lo iremos esclareciendo a los l
 próximos minutos.
 
 Antes de implementarlo todo con clases de Python, vamos a hacerlo con pandas para 
-asegurarnos del todo que entendemos el funcionamiento interno del StandardScaler.
+asegurarnos al 100% de que entendemos lo que debemos escribir.
 
 Este paso es opcional, pero nos ayudará mucho antes de entrar en la POO.
 
@@ -177,7 +177,7 @@ Fijaos que de alguna manera podría implementar todas estas funcionalidades en u
 objeto reloj porque dentro de mi aplicativo esto tiene lógica y sentido.
 
 Pues bien, dentro de la programación orientada a objetos, cuando hablamos de añadir
-funcionalidades estamos hablando de añadir un método a nuestra clase.
+funcionalidades estamos hablando de añadir un método o métodos a nuestra clase.
 
 Dado que en nuestro caso, queremos replicar el StandardScaler vamos a añadir el método
 de fit.
@@ -216,6 +216,8 @@ Quiero llamar la atención a dos cosas:
    Además, una clase puede contener tantos métodos cuantos necesitamos, 
    cada uno encargado de una tarea concreta.
 
+   Así que me permite organizar todo en función de las demandas de mi proyecto.
+
 2. Una segunda cosa muy importante es el primer parámetro dentro de nuestro método que
     es el `self`. El funcionamiento exacto de `self` lo vamos a ver al final del video, 
     pero de momento quiero que os quedéis con que:
@@ -228,7 +230,8 @@ Quiero llamar la atención a dos cosas:
    algo en la base de datos, escalamos etc.
 
    Es muy diferente a los atributos que veremos más adelante y que normalmente son 
-   valores "constantes".
+   valores "constantes" o bien valores que "determinan el comportamiento de nuestra 
+   instancia".
 
 Ahora después de haber implementado esto, podemos poner a prueba nuestro código y ver
 si vamos a poder calcular correctamente la media y la varianza de nuestro dataset.
@@ -253,7 +256,7 @@ delante de un atributo de la clase. Un atributo nos es más que un valor que def
 una instancia de una clase. En nuestro ejemplo: esta media y varianza son atributos
 de scaler.
 
-Pensado que podríamos tener otro scaler, aplicado a otro dataset que tendría otra
+Podríamos tener otro scaler, aplicado a otro dataset que tendría otra
 media y otra varianza y por tanto sería diferente.
 
 Si esto os resulta complicado, pensad en una Persona.
@@ -292,7 +295,7 @@ veremos en un vídeo especial que estoy preparando sobre este tema.
 
 Además devolvemos el self para que nuestra clase sea compatible con scikit-learn.
 
-En nuestro código y proyecto, quizás deben devolver otra cosa o no devolver nada. 
+En vuestro código y proyecto, quizás deben devolver otra cosa o no devolver nada. 
 
 Esto ya dependerá de las necesidades de vuestro proyecto.
 
@@ -336,7 +339,7 @@ Existe un método muy especial en Python que es el primero que se invoca cuando 
 a crear una instancia de una clase y se llama el constructor.
 
 En Python el constructor es el `__init__`. El propósito del constructor es recibir
-determinados atributos que van a depeterminar como se debe comportar nuestra instancia. 
+determinados atributos que van a condicionar como se debe comportar nuestra instancia. 
 
 En nuestro caso, el valor que va a recibir nuestro constructor es el parámetro verbose
 que determinará si se deben o no printear los valores de antes.
@@ -345,7 +348,7 @@ Para definir el constructor es muy fácil, es el primer método que aparece y de
 el doble guión bajo (los métodos con __ son métodos internos de Python y se conocen como
 dunder method: dunder de doble underscore).
 
-Quintando estas excentricidades, todo lo demás es como una función o método normal de 
+Quitando estas excentricidades, todo lo demás es como una función o método normal de 
 Python: lleva el self y los demás parámetros.
 
 Dado que yo quizás tendré que consultar más adelante el valor de verbose, lo debo
@@ -356,6 +359,163 @@ motivo lo guardo en:
     self.verbose = verbose
 ```
 
+De esta manera, si yo ahora cambio ligeramente el código, puedo incorporar este verbose.
+
+```python
+
+class MyCustomScaler:
+
+    def fit(self, X):
+        mean_ = X.mean()
+        var_ = X.var(ddof = 0)
+
+        if self.verbose:
+            print(mean_)
+            print(var_)
+
+```
+
+Yo ahora puedo tener 2 scalers, con verbose = True y verbose = False y este verbose
+"determina" el comportamiento que tienen.
+
+----
+
+Otra cosa muy relevante que deben saber de la programación orientada a objetos es el 
+concepto de "Herencia".
+
+Uno de sus puntos fuertes de la OOP es la reutilización de código entre clases. 
+
+Básicamente yo puedo definir un método y posteriormente "propagar" este método entre
+otras clases.
+
+Veamos a que me estoy refiriendo.
+
+Si volvemos un minuto a nuestro StandardScaler, podemos ver que tiene otro método
+llamado `fit_transform` que básicamente invoca el fit y luego el transform.
+
+Pues bien, nosotros podríamos definir un método idéntico como sigue:
+```python
+
+    def fit_transform(self, X):
+
+        Xt = self.fit(X=X).transform(X=X)
+
+        return Xt
+
+```
+
+Ahora bien, pensad un segundo, si yo voy a tener que definir otras clases parecidas a 
+estas, no tiene mucho sentido tener que definit el fit_transform en todas ellas.
+
+Tendría mucho más sentido, que haya 1 único método, que invoca estos dos y yo poder 
+reaprovecharlo.
+
+Pues resulta que nosotros esto lo podemos hacer a continuación con un mini clase.
+
+Os adelanto en que vamos a descartar esta clase más adelante, pero para entender el
+funcionamiento inicial nos vendrá muy bien.
+
+```python
+class MyTransformerMixin():
+
+    
+    def fit_transform(self, X):
+        print("Hello from TransformerMixin")
+        Xt = self.fit(X=X).transform(X=X)
+
+        return Xt
+
+```
+
+Fijaos como hemos llevaod el fit_transform a otra clase llamada MyTransformMixin.
+
+Ahora podemos incorporar este método dentro de nuestro scaler de manera muy fácil 
+haciendo lo siguiente. Después del nombre, abrimos paréntesis y añadimos nuestra clase
+anterior.
+
+Con este pequeño cambio, hemos conseguido una cosa muy relevante, incorporar el
+fit_transform a nuestro scaler sin necesidad de definirlo dentro de la clase.
+
+Fijaos que si ahora vuelvo a crear una instancia, tengo disponible un nuevo método.
+
+He heredado un método de MyTransformerMixin y lo tengo dentro de MyCustomScaler.
+
+Si luego tengo otro Scaler, haría lo mismo y no me estaría ahorando un montón de código.
+
+Pero como os decía, este ejemplo sirve para explicar el concepto.
+
+Ahora lo que vamos a hacer es reutilizar un montón de cosas directamente de la librería
+de scikit-learn.
+
+Vamos a importar el TransformerMixin y BaseEstimator y veréis como usaremos capacidades
+ya definidas por terceros dentro de mi proyecto.
+
+En nuestro caso, añadiendo esto dentro de MyCustomScaler, fijaos ahora como la 
+representación visual de mi instancia ha cambiado (esto es gracias a BaseEstimator) y 
+también tengo ahora el método de fit_transform gracias a TransformerMixin.
+
+Todo esto sin escribir ni un línea de código y gracias a la herencia de POO.
+
+----
+Vamos a explicar ahora por útlimo el paramétro self.
+
+Self sirve como una autoreferencia a la instancia que estoy manejando. Dado que puedo
+tener muchos scalers, con diferentes paramétros verbose y aplicados diferentes datasets,
+Python necesita saber en que cajón debe guardar cada una de estas variables.
+
+Pues el parámetro self le ayuda en esta organización.
+
+Pero en realidad hay otra forma mucho más sencilla de entender el self.
+
+Mirad como self aparece dentro de cada método (que como hemos dicho, no es más que una
+función). Por tanto, si aparece self, significa que tanto el `fit` como el `transform`
+deben recibir 2 paramétros.
+
+¿Que pasa si le intento suministar 2 paramétros?
+
+Pues resulta que Python dice que le he pasado 3 parámetros pero todos sabemos que han 
+sido dos.
+
+¿Que ocurre aquí?
+
+Pues resulta, que cuando yo hago `fit(X=X)` Python en realidad por detrás ejecuta el
+siguiente código:
+
+```python
+MyStandardScaler.fit(self=my_scaler, X=X)
+```
+
+¿Que hace aquí el Python?
+
+Para ahorrar memoria, Python va a la clase original y ejecuta el código fit suministrando 
+a su vez la instancia que toca.
+
+¿Y porque puede hacer esto Python? Por las acciones que realiza cada clase son los mismos:
+y son los métodos de `fit` y `transform`.
+
+Lo que determina caracteriza una instancia no son sus métodos sino sus atributos.
+
+Yo el ejemplo que siempre pongo es con una persona: si tu en tu programa tienes una clase
+Persona que sabe andar y hablar. No tiene ningún sentido que Python para 8 mil millones
+de instancias de Persona tenga que guardar en memoria el funcionamiento de estos métodos.
+
+Es mucho más fácil, tener los atributos de cada persona (su nombre por ejemplo) y 
+recurrir a la clase principal en búsqueda del código. Literalmente nos estaríamos
+ahorrando un montón de memoria.
+
+----
+Hagamos ahora un breve recap:
+1. Una clase en Python empieza por la palabra reservada class.
+2. Los métodos de una clase son funciones que están anidadas dentro de la clase.
+   Los métodos reciben como primer parámetro el self.
+   Los métodos normalmente hacen referencia a una acción/verbo que sabe hacer la clase.
+   Una persona sabe andar.
+3. Los atributos de una clase son aquellos valores que determinan su funcionamiento.
+   Los atributos normalmente son constantes.
+   Una persona tiene un nombre y un DNI.
+4. La herencia en POO es una patrón muy potente para reutilizar código entre clases.
+5. En Python normalmente se invoca el código desde la clase principal y se suministra
+   automáticamente el self=instancia que están trabajando.
 
 ----
 Esto es todo por hoy. Si os ha gustado el vídeo no os olvidéis de suscribirse y darle
