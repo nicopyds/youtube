@@ -287,15 +287,15 @@ Ahora vemos que tenemos un output muy parecido al StandardScaler de scikit-learn
 
 Poco a poco nos estamos acercando a nuestro objetivo final.
 
-Una buena praxis en Python y en programación en general es que tus funciones tengan
-un return. Nosotros aquí vamos a hacer un return de self.
+Una cosa que quiero llamar la atención es en nuestro return: en este caso devolvemos
+el self.
 
-Este return de self lo que permite es hacer el "chaining" de métodos en Python, pero lo
-veremos en un vídeo especial que estoy preparando sobre este tema.
+Esto nos habilita dos cosas:
 
-Además devolvemos el self para que nuestra clase sea compatible con scikit-learn.
+1. Hacer el "chaining" de métodos en Python, esto lo veremos más adelante en el vídeo. 
+2. Al devolver el self seguimos las convenciones marcadas por scikit-learn.
 
-En vuestro código y proyecto, quizás deben devolver otra cosa o no devolver nada. 
+En vuestro código no obstante, esta parte la deben adaptar a las cosas que necesitan. 
 
 Esto ya dependerá de las necesidades de vuestro proyecto.
 
@@ -338,8 +338,9 @@ pero vamos a aprovechar para explicar el `__init__`.
 Existe un método muy especial en Python que es el primero que se invoca cuando vamos 
 a crear una instancia de una clase y se llama el constructor.
 
-En Python el constructor es el `__init__`. El propósito del constructor es recibir
-determinados atributos que van a condicionar como se debe comportar nuestra instancia. 
+En Python el constructor es el `__init__`.
+
+El propósito de __init__ es inicializar la instancia con los valores que necesitamos.
 
 En nuestro caso, el valor que va a recibir nuestro constructor es el parámetro verbose
 que determinará si se deben o no printear los valores de antes.
@@ -403,6 +404,10 @@ Pues bien, nosotros podríamos definir un método idéntico como sigue:
         return Xt
 
 ```
+
+Esto funciona porque nuestro método fit devuelve self, es decir, la propia instancia. 
+
+Por tanto, después de ejecutar fit podemos llamar directamente a transform.
 
 Ahora bien, pensad un segundo, si yo voy a tener que definir otras clases parecidas a 
 estas, no tiene mucho sentido tener que definit el fit_transform en todas ellas.
