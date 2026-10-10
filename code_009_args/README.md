@@ -175,21 +175,57 @@ del df en una tupla llamada args.
 Si nunca has escuchado sobre parámetros posicionales en Python, tengo varios vídeos que
 hablan sobre estos conceptos, así que quizás te puede interesar verlos más tarde.
 
-Al recoger todos los valores en la tupla args, puedo iterar sobre ella 
+Al recoger todos los valores en la tupla args, puedo iterar sobre ella.
 
 ```python
 
 def versatile_func(df, *args):
-    for arg in args:
-        func = getattr(df, arg)
-        print(f"El {arg} del df es:")
-        print(func())
 
-versatile_func(df, "head", "tail", "describe")
+    print(args, type(args), len(args))
+
+    for arg in args:
+        if hasattr(df, arg):
+            func = getattr(df, arg)
+            print(func())
+
+
+versatile_func(df, "head", "tail", "describe", "random_method")
+versatile_func(df, "head", "tail")
 
 ```
 
+Esto me ofrece mucha mucha flexibilidad y además queda un código mucho más compacto y
+limpio.
+
+Fiamos como podemos iterar sobre los args.
+
+Posteriormente, utilizo las funcionalidades nativas de Python de `hasattr` y `getattr` 
+para poder ejecutarlo de manera dinámica.
+
+Además de esto, esto me protege contra llamadas a esta función con métodos que no existen
+en el DataFrame, así que queda mucho más seguro y robusto.
+
+Pues bien, llega la hora de la verdad y ahora puedo ejecutar mi función dependiendo de
+las preguntas que me ha hecho mi jefe.
+
+Una día me puede pregunta esto y otro día otra cosa diferente y mi función lo soporta
+todo sin que yo tenga que hacer ningún cambio.
+
 ---
+
+Espero que con este video corto y con este mini ejemplo, queda un poco más claro que son
+los *args.
+
+Recuerden, *args recoge todos los paramétros posicionales de una función en una variable
+llamada args y de esta manera me da la posibilidad de suministrarle un número indetermiado
+de parámetros.
+
+Vais que con el siguiente vídeo de los **kwargs que como os podéis imaginar, recogerá
+un número indetermiandos de keyword parámetros, que los *args y los **kwargs me ayudan
+a definir funciones muy avanzandas y flexibles en Python.
+ 
+---
+
 
 Esto es todo por hoy. Si os ha gustado el vídeo no os olvidéis de suscribirse y darle
 al like. Esto me ayuda mucho al canal.

@@ -10,12 +10,14 @@ df = pd.read_csv(DF_PATH)
 
 
 def versatile_func(df, *args):
+
+    print(args, type(args), len(args))
+
     for arg in args:
         if hasattr(df, arg):
             func = getattr(df, arg)
             print(func())
-        else:
-            print("You df doesn't have this method!")
 
 
 versatile_func(df, "head", "tail", "describe", "random_method")
+versatile_func(df, "head", "tail")
