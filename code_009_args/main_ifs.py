@@ -1,4 +1,5 @@
 from pathlib import Path
+
 import pandas as pd
 
 FILE_PATH = Path(__file__)
@@ -8,7 +9,7 @@ DF_PATH = DIR_PATH.joinpath("spotify_songs.csv")
 df = pd.read_csv(DF_PATH)
 
 
-def versatile_func(df, *, head=True, tail=True, describe=True, sample=True):
+def versatile_func(df, head=True, tail=True, describe=True):
     if head:
         print("El head del df es:")
         print(df.head())
@@ -18,10 +19,7 @@ def versatile_func(df, *, head=True, tail=True, describe=True, sample=True):
     if describe:
         print("El describe del df es:")
         print(df.describe())
-    if sample:
-        print("El sample del df es:")
-        print(df.sample())
 
 
-versatile_func(df, head=True, tail=False, describe=False, sample=True)
-versatile_func(df, head=False, tail=False, describe=True, sample=True)
+versatile_func(df, head=True, tail=False, describe=False)
+versatile_func(df, head=False, tail=False, describe=True)

@@ -1,4 +1,5 @@
 from pathlib import Path
+
 import pandas as pd
 
 FILE_PATH = Path(__file__)

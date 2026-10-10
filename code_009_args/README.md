@@ -4,12 +4,15 @@ Hola amigos, ¿que tal todo?
 
 Bienvenidos a un nuevo video.
 
-En el vídeo de hoy vamos a hablar sobre la sintáxis de *args en Python.
+En el vídeo de hoy vamos a hablar sobre los *args en Python.
 
 Los *args se suele considerar como un concepto "avanzado" en Python pero creo que esto
-se debe sobre todo porque la sintáxis de "*algo" tiene varios usos en Python.
+se debe sobre todo porque la sintáxis de "*algo" tiene muchos usos y a veces, en función
+del contexto donde aparece, en realidad realiza operaciones opuestas.
 
-Nosotros hoy nos vamos a centrar en explicar únicamente los casos cuando *args
+Pero no lo vamos a complicar más.
+
+Nosotros hoy nos centraremos en explicar únicamente los casos cuando *args
 aparece dentro de la definición de una función en Python.
 
 En concreto, si alguna vez has visto una función parecida a la siguiente:
@@ -29,10 +32,35 @@ Empecemos.
 
 Lo primero que vamos a hacer, es plantear un caso práctico.
 
-Imagina que eres un Data Analyst en Spotify y necesitas hacer un análisis de diferentes
+Y de hecho, uno de los motivos de porque hago este vídeo hoy es porque muchos de los
+ejemplos que te encuentras cuando se explican los *args tiene que ver con un ejemplo
+de `suma` y te muestran un ejemplo parecido a este:
+
+```python
+def suma(*args):
+    total = 0
+    for arg in args:
+        total += arg
+    return total
+```
+
+Y puedes llegar a utilizar la función de la siguiente manera:
+
+```python
+print(suma(1, 2, 3))
+print(suma(4, 5, -7))
+```
+
+Ahora bien, yo siempre me preguntaba, porque no utilizar la función nativa de `sum`.
+
+----
+
+Pues bien, voy a intentar plantear un ejemplo "un poco más real".
+
+Imagina que eres un Data Analyst en Spotify y tu tarea es hacer análisis de diferentes 
 canciones.
 
-En concreto, tenemos una dataset parecido al siguiente:
+En concreto, de manera regular trabajas con un dataset parecido a este: 
 
 ```text
                  track_id                                         track_name      track_artist  valence    tempo duration_ms
@@ -47,15 +75,16 @@ Pues bien, de manera recurente tu jefe te hace diferentes preguntas sobre este d
 
 ¿Cuantas canciones tenemos?
 
-¿Cuales son los difentes estádisticos de este dataset?
+¿Cuales son los diferentes estádisticos de este dataset?
 
 ¿Dime los primeras cinco canciones más populares? 
+
+¿Dime las últimas cinco canciones que se han añadido?
 
 Etc etc etc
 
 Un tema importante para que se entienda bien el caso que planteamos es que nuestro jefe
-es exigente pero no del todo constante y cada día nos pregunta diferentes cosas y no
-siempre en el mismo orden.
+es exigente y cada día nos pregunta diferentes cosas y en diferente orden. 
 
 Esto lo digo, porque no podemos predecir que nos va a preguntar ni el número de preguntas
 que nos va a hacer.
@@ -64,7 +93,37 @@ En este caso, podemos empezar a plantear una solución parecida a la esta:
 
 ```python
 
-def versatile_func(df, *, head = True, tail = True, describe = True, sample = True):
+def versatile_func(df, *, head = True, tail = True, describe = True):
+    if head:
+        print("El head del df es:")
+        print(df.head())
+    if tail:
+        print("El tail del df es:")
+        print(df.tail())
+    if describe:
+        print("El describe del df es:")
+        print(df.describe())
+
+versatile_func(df, head = True, tail = False, describe = False)
+versatile_func(df, head = False, tail = False, describe = True)
+
+```
+
+Planteamos una función "versátil" donde defino diferentes métodos y en función de si
+el flag es verdadero (en función de si me jefe me pregunta o no) puedo obtener un 
+resultado o no.
+
+Esta función la puedo utilizar de la siguiente manera y puedo salir de paso.
+
+Ahora bien, un problema clave que plantea esta solución es ¿que pasa si ahora mi jefe
+me pregunta algo nuevo?
+
+Puedo ir a añadir un nuevo parámetro a mi función pero claramente no es una solución
+demasiada práctica.
+
+```python
+
+def versatile_func(df, head = True, tail = True, describe = True, sample=True):
     if head:
         print("El head del df es:")
         print(df.head())
@@ -83,16 +142,6 @@ versatile_func(df, head = False, tail = False, describe = True, sample=True)
 
 ```
 
-Planteamos una función "versátil" donde defino diferentes métodos y en función de si
-es verdadero (en función de si me jefe me pregunta o no) puedo obtener un resultado o no.
-
-
-Ahora bien, un problema clave que plantea esta solución es que pasa si ahora mi jefe
-me pregunta algo nuevo.
-
-Puedo ir a añadir un nuevo parámetro a mi función pero claramente no es una solución
-demasiada práctica.
-
 Acabaremos en una jungla de ifs y un montón de booleanos.
 
 Necesitamos una solución más elegante.
@@ -102,7 +151,7 @@ Necesitamos una solución más elegante.
 Una cosa quiero haceros ver del anterior ejemplo es que mi jefe me puede preguntar un 
 número indetermiado de cosas. Un día pueden ser 3 y otras veces pueden ser 10.
 
-Para estos casos, yo necesito plantear una función igual. Una función que acepte
+Para estos casos, yo necesito plantear una función parecida. Una función que acepte
 un número indeterminados de parámetros.
 
 En Python, los *args sirven justo para este propósito: definir funciones muy flexibles
@@ -112,6 +161,22 @@ que aceptan un número indeterminados de parámetros.
 
 Veamos:
 
+El cambio que voy a hacer a mi función es eliminar todos los flags.
+
+El primer parámetro de mi función sigue siendo el `pandas.DataFrame` pero posteriormente
+lo que voy a hacer es añadir esta sintáxis de *args.
+
+Args es sólo un nombre y en realidad puedo llamarlo *métodos o lo que *cosas, pero 
+el consenso es llamarlo *args.
+
+Este args en Python, lo que hará es recoger, todos los parámetros posicionales después
+del df en una tupla llamada args.
+
+Si nunca has escuchado sobre parámetros posicionales en Python, tengo varios vídeos que
+hablan sobre estos conceptos, así que quizás te puede interesar verlos más tarde.
+
+Al recoger todos los valores en la tupla args, puedo iterar sobre ella 
+
 ```python
 
 def versatile_func(df, *args):
@@ -119,7 +184,6 @@ def versatile_func(df, *args):
         func = getattr(df, arg)
         print(f"El {arg} del df es:")
         print(func())
-
 
 versatile_func(df, "head", "tail", "describe")
 
