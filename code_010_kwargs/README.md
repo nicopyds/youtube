@@ -50,7 +50,7 @@ posicionales que queramos.
 Posicional quiere decir de que no invoco el paramétro por su nombre.
 
 Mirad aquí a la hora de invocar esta función, "head" y "tail" corresponden al paramétro
-2 y 3 de esta función porque es la posición que tienen en esta ejecución.
+2 y 3 de esta función porque es la posición que tienen cuando ejecuto el código.
 
 ```python
 
@@ -88,14 +88,14 @@ posicionales a una función y posteriormente Python lo volcará todo esto en una
 En nuestro caso, los *args son strings y corresponden con el nombre los diferentes 
 métodos de un pandas DataFrame.
 
-Al estar en una tupla, yo puedo iterar sobre ella y dinámicamente ejecutarlos.
+Al estar en una tupla, yo puedo iterar sobre ella y ejecutarlos dinámicamente.
  
 ---
 
-Pues bien, nuestra solución actual con los **kwargs tiene un gran defecto y es que no
+Pues bien, nuestra solución actual con los *args tiene un gran defecto y es que no
 permite suministrarle ningún paramétro adicional.
 
-De alguna manera sólo funciona con los paramétros default de cada método.
+De alguna manera sólo puedo ejecutar los métodos con los parametros que vienen por default.
 
 Dicho de otra manera, si mi jefe me pide ahora mismo los 10 primeros registros, 
 es decír un head(n=10), ninguna de las dos soluciones funcionaría.
@@ -110,10 +110,14 @@ Un paramétro es keyword en Python, cuando al invocar una función, suministramo
 por su nombre. El interprete de Python cogerá todos estos valores y los meterá en un
 diccionario que nosotros podemos iterar y mover de un lado a otro.
 
+En este diccionario, las llaves o las keys serán el nombre del paramétro como texto y 
+el value del diccionario será el valor del parámetro que le pasé.
+
 ---
 
-Que cambios podemos hacer en nuestro código para que acepte keyword arguments, pues el 
-cambio va a ser muy fácil porque únicamente tendremos que venir aquí y decir: acepta
+¿Que cambios podemos hacer en nuestro código para que acepte keyword arguments?
+
+Pues el cambio va a ser muy fácil porque únicamente tendremos que venir aquí y decir: acepta
 **kwargs y cuando llega el momento de ejecutar el código, también acepta todos estos
 kwargs.
 
@@ -139,7 +143,7 @@ Fijaos aquí que si me pide las primeras 10 canciones de hoy, yo se lo puedo sum
 y si me pide la correlación de pearson de este dataset de los valores numéricos también
 se lo puedo dar.
 
-En estos casos, df corresponde con el primer paramétros de mi df, "corr" corresponde
+En estos casos, df corresponde con el primer paramétros de mi versatile_func, "corr" corresponde
 a los *args porque no lo suministro por el nombre.
 
 Y por último method y numeric_only only, serán dos **kwargs porque los llamo por su nombre.
@@ -154,7 +158,7 @@ versatile_func(df, "corr", method="pearson", numeric_only = True)
 ```
 
 Evidentemente, si yo intento implementar esta lógica en la solución con los ifs esto va 
-a ser muy díficil y quedará una función muy larga. 
+a ser muy díficil y quedará una función muy muy larga. Así que mejor ni intentarlo.
 
 ---
 
@@ -171,11 +175,13 @@ versatile_func(df, "head", "corr", n=10, method="pearson", numeric_only = True)
 
 El error me dice que el método head de pandas no tiene ningún paramétro que sea method y
 si miramos la documentación, efectivamente vemos que sólo acepta 1 paramétro, y es la
-n o el número de filas.
+`n` o el número de filas.
 
 Pues bien, esto podría ser un tema menor y realmente podrías quedarnos con la solución
-actual e ir invocando la función varias veces con diferentes paramétros y ser felices pero
-no es la forma como lo hacemos aquí.
+actual e ir invocando la función varias veces con diferentes paramétros y ser felices.
+
+Pero no es la forma como lo hacemos aquí. Aquí queremos ir un paso más adelante y 
+profundizar en las cosas que tiene Python.
 
 ¿Se os ocurre una forma de cambiar el código de esta función para solventar este error?
 
@@ -186,7 +192,7 @@ Os animo a que pongan en pausa durante unos minutos este vídeo y piensen en una
 Han pasado ya varios minutos y vamos a relevar una posible implementación.
 
 Para que este error no ocurra, debemos, antes de suministrar los **kwargs en la ejecución
-de una función, comprobar que esta función lo acepte.
+de una función, comprobar que esta función los acepta.
 
 Y la forma más fácil de hacerlo es usar el módulo de inspect de Python.
 
@@ -217,7 +223,7 @@ def versatile_func(df, *args, **kwargs):
 ```
 
 Con inspect podemos, antes de ejecutar una función checkear para cada uno de nuestros
-kwargs si la función acepta esta paramétros.
+kwargs si la función acepta estos paramétros.
 
 De esta manera, podemos al vuelvo construir un nuevo diccionario llamado params y 
 utilizarlo como **kwargs en nuestra ejecución.
@@ -239,13 +245,15 @@ extremadamente útiles en muchos contextos.
 
 Pero un gran poder conlleva una gran responsabilidad y no se deben abusar de ellas.
 
-Ante todo recuerden:
+Ante todo intenten seguir estos consejos:
 1. No hay que sobrecomplicar las cosas. En la medida de lo posible debemos intentar
     implementar una solución fácil y sencilla.
 2. Tenemos que vigilar que nuestra función se convierta en una "god-function": una función
-    que hace demasiadas cosas.
-3. Si vemos que nuestro código hacer demasiadas cosas, siempre es mejor simplifcarlo y 
-    partirlo en diferentes métodos o funciones más pequeñas.
+    que hace demasiadas cosas en demasiados sitios de nuestro proyecto.
+3. Si vemos que nuestro código empieza a hacer demasiadas cosas, 
+    siempre es mejor simplifcarlo y partirlo en diferentes métodos o funciones más pequeñas.
+
+    Vuestro yo del futuro os lo agradecerá.
 
 ---
 
