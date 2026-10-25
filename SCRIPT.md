@@ -13,11 +13,11 @@ Empecemos.
 ----
 
 Esto es todo por hoy. Si os ha gustado el vídeo no os olvidéis de suscribirse y darle
-al like. Esto me ayuda mucho al canal.
+al like. Esto ayuda mucho al canal.
 
 Si conocen a alguien que puede encontrar útil este video, compartidlo con ellos.
 
-Y si os queda alguna duda o sugerencia, poned un comentario y yo intentaré contestarlo
+Si os queda alguna duda o sugerencia, poned un comentario y yo intentaré contestarla
 cuanto antes.
 
 Cuidaros mucho y nos vemos pronto.
