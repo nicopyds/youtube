@@ -7,10 +7,13 @@ Bienvenidos a un nuevo vídeo.
 En el vídeo de hoy vamos a hablar sobre herramientas que nos ayudan a mejorar
 nuestro código de manera fácil y rápida.
 
-Vamos a ver 5 herramientas, cada una sirve para un propósito bien diferenciado y lo mejor 
-de todo: estas tools son complementarias. 
+Vamos a ver 5 herramientas, cada una sirve para un propósito concreto y lo mejor de 
+todo: son complementarias, así que se pueden incorporar poco a poco en nuestros proyectos.
 
-Así que si las aplicas, el resultado final será un repo mucho mejor.
+El caso que os traigo os es un código funcional y que se puede ejecutar sin fallos.
+
+No obstante, es un código que se puede mejorar y nos vamos a apoyar en las tools externas
+para ir gradualmente refinando y mejorando nuestro script.
 
 Empecemos.
 
@@ -24,19 +27,31 @@ La forma de usarlo es muy fácil, lo primero que debes hacer es instalar esta he
 Yo voy a usar la línea de comandos, así que teniendo un entorno virtual activado en Python
 lo que voy a hacer es `pip install isort`.
 
+Por cierto, esto mismo aplica al resto de tools, así que asegurate de instalarlas antes
+de ejecutar los comandos.
+
 Después de la instalación, tendré el comando de isort disponible.
 
+Hay muchas formas de usarlos y se pueden configurar varias extensiones en tu editor de 
+código como Visual Studio. 
+
+Yo no obstante lo voy a usar desde la línea de comandos.
+
 Con isort, podemos apuntar a un fichero o un carpeta directamente y la herramienta
-va a arreglar los imports que tenemos de acuerdo con PEP8.
+va a arreglar los imports de nuestros ficheros de acuerdo con PEP8.
+
+Puedo lanzar el comando isort file.py --check para ver que tal los ficheros. 
 
 Podemos mirar ahora nuestro fichero y ver que los imports han cambiado: primero vienen 
-los imports de las librerías nativas de Python, luego van los imports de los paquetes 
-que hemos instalado como pandas y numpy y por último irían los imports de nuestra 
-propia aplicación.
+los imports de las librerías nativas de Python (como os o sys), luego van los imports 
+de los paquetes que hemos instalado como pandas y numpy y por último irían los imports 
+de nuestra propia aplicación.
 
 Una cosa curiosa es que los imports del estilo, `from paquete import class` como lo
 que hacemos con numpy, van después de los imports de toda la librería como 
 `import pandas as pd`.
+
+En Python tenemos un orden para todo.
 
 Así que esto es `isort` un mini herramienta para ordenar los imports.
 
@@ -51,7 +66,7 @@ La instalación es idéntica a `isort` hacemos un pip install `black` y tenemos 
 
 El propósito de `black` es formatear nuestro código de acuerdo, otra vez, con PEP8.
 
-Ya veís que PEP8 es quizás el más influyente dentro de la comunidad de Python. 
+Ya veís que PEP8 es quizás el PEP más influyente dentro de la comunidad de Python. 
 
 No me voy a detener en explicar todos los consensos que hay alrededor de como hay que
 formatear el código en Python, sólo te diré que si instalas y empiezas a usar `black`
@@ -61,16 +76,17 @@ Otro beneficio de usar `black` es que ya no habrá peleas entre los diferentes m
 del equipo, porque como todos formatearán el código de la misma manera, todos lo verán
 de la misma manera.
 
-Si miramos nuestro fichero, un ojo no entrenado quizás no verá nada, pero es código 
-haría sangrar a cualquier senior y OJO: el código es 100% funcional, es nunca mejor dicho
-una cuestión de estilos.
+Si miramos nuestro fichero, una persona no entrenada quizás no verá nada, pero es código 
+haría sangrar a cualquier senior: el código es 100% funcional, pero es feo verlo.
+
+Nunca mejor dicho una cuestión de estilos.
 
 Aplicamos `black` y fijaos la diferencia, se han quitando los espacios innecesarios, 
-se respeta la separación de 80 carácteres por fila etc.
+se respeta la separación de 88 carácteres por fila etc.
 
-Nuestro código sigue funcionando como antes, pero ha mejora su legitibilidad.
+Nuestro código sigue funcionando como antes, pero ha mejorado su legitibilidad.
 
-Un pequeño truco aquí es: que si hay algo que no queremos que formateé `black` lo podemos
+Un pequeño truco aquí es: que si hay algo que no queremos que formatee `black` lo podemos
 envolver alrededor de los siguientes comentarios:
 
 ```python
@@ -87,7 +103,7 @@ Black verá #fmt: off y desactivará el formateo de código hasta encontrar la l
 que contenga # fmt: on.
 
 Por supuesto, también se pueden cambiar las reglas y el comportamiento de black con
-un fichero `pyprojecto.toml` o `setup.cfg`: aunque a mi las reglas que ya vienen por
+un fichero `pyprojecto.toml` o `setup.cfg`: aunque a mi las reglas que vienen por
 defecto me gustan bastante.
 
 Instala `black` y empieza a usarlo hoy en tus proyectos.
@@ -108,6 +124,37 @@ si quieres una herramienta todo en 1, usa ruff.
 Ahora bien, como nos puede ayudar `ruff`: básicamente si hacemos `ruff check` un fichero
 o directorio, `ruff analizará todos nuestros ficheros` y nos dirá determinados fallos
 que se va encontrando.
+
+Cuando estamos conformes con los cambios, podemos hacer `ruff check --fix ./` y ruff
+en cuestión de segundos nos aplicará los cambios.
+
+Si quieres `ruff` para formatear, puedes usar el código de `ruff format ./`.
+
+----
+
+La siguiente herramienta que quiero contaros es `pylint` y es un paquete de Python que
+al igual que ruff hace análisis estático de código, pero su análisis es más profundo e
+implementa reglas diferentes a las de ruff. Así que se complementan de maravilla.
+
+Puede encontrar código duplicados entre diferentes ficheros, detecta errores, hace check
+si tenemos la documentación escrita y otra muchas cosas.
+
+Una cosa importante de pylint es que no cambia los ficheros, únicamente nos 
+reporta las errores o incosistencias que encuentra. Así que es tarea del programador
+entrar y modificar el código.
+
+Veamos que nos reporta a nosotros. Vemos aquí varias mejoras y ahora las podemos 
+arreglar rápido.
+
+Yo personalmente desde que empecé a usarlo, noté que escribo un código mucho mejor, de
+mayor calidad y más profesional así que os recomiendo mucho usarlo. 
+
+Y nos nos engañemos, si pylint nos reporta que tenemos un código de 10, nos sentimos 
+muy bien.
+
+----
+
+La última herramienta que os traigo se llama `mypy`.
 
 ----
 
