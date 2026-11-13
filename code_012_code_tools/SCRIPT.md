@@ -177,8 +177,8 @@ df = pd.DataFrame(data=dummy_data) # pylint: disable=redefined-outer-name
 Esto lo puedo hacer con `# pylint: disable=redefined-outer-name`.
 
 Tened en cuenta que esto es un arma de doble filo: puedo ignorar todo los warnings
-que me salen de pylint y no me van a salir más errores, así que usad esta herramienta
-con responsabilidad.
+que me salen de pylint y no me van a salir más errores pero tampoco he mejorado nada, 
+así que usad esta herramienta con responsabilidad.
 
 Os recomiendo mucho que no os agobiéis con la cantidad de errores y warnings que os 
 pueda sugerir pylint, sobre todo en proyectos grandes.
@@ -189,7 +189,23 @@ Lo importante aquí es dejar el código mejor de lo que nos lo hemos encontrado 
 poco a poco en mejorarlo.
 
 Y nos nos engañemos, si pylint nos reporta que tenemos un código de 10, nos sentimos 
-muy bien.
+muy bien, así que esto es otro motivo para mejorarlo.
+
+----
+
+Ahora hagamos un breve recap y una comparación del fichero final con el fichero inicial. 
+
+Los dos ficheros nos dan el mismo resultado, pero la diferencia entre uno y el otro es
+abismal y lo único que hemos tenido que hacer es aplicar `isort`, `black` y `ruff` 
+para ordenar, formatear y eliminar parte del código muerto.
+
+Posteriormente hacemos `pylint` y corregimos los diferentes errores que surgen.
+
+Esto nos ha dado un código de 10.
+
+Si os ha parecido interesante estas herramientas, también le pueden echar un vistazo a 
+`mypy` y `flake8` que son otras herramientas muy útiles para mejorar el CI/CD de los
+proyectos de Python.
 
 ----
 
