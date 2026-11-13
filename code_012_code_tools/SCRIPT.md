@@ -7,7 +7,7 @@ Bienvenidos a un nuevo vídeo.
 En el vídeo de hoy vamos a hablar sobre herramientas que nos ayudan a mejorar
 nuestro código de manera fácil y rápida.
 
-Vamos a ver 5 herramientas, cada una sirve para un propósito concreto y lo mejor de 
+Vamos a ver 4 herramientas, cada una sirve para un propósito concreto y lo mejor de 
 todo: son complementarias, así que se pueden incorporar poco a poco en vuestros 
 proyectos y cada una de ellas ayudará a mejorar el código y reducir los errores.
 
@@ -153,7 +153,8 @@ al igual que ruff hace análisis estático de código, pero su análisis es más
 implementa reglas diferentes a las de ruff. Así que se complementan de maravilla.
 
 Puede encontrar código duplicados entre diferentes ficheros, detecta errores, hace check
-si tenemos la documentación escrita y otra muchas cosas.
+si tenemos la documentación escrita y otra muchas cosas. Vamos, que es una auténtica 
+maravilla.
 
 Una cosa importante de pylint es que no cambia los ficheros, únicamente nos 
 reporta las errores o incosistencias que encuentra. Así que es tarea del programador
@@ -162,15 +163,33 @@ entrar y modificar el código.
 Veamos que nos reporta a nosotros. Vemos aquí varias mejoras y ahora las podemos 
 arreglar rápido.
 
-Yo personalmente desde que empecé a usarlo, noté que escribo un código mucho mejor, de
-mayor calidad y más profesional así que os recomiendo mucho usarlo. 
+A nosotros nos sugiere que debemos añadir documentación al código y luego que tenemos
+una variable en una función que es igual que una variable definida dentro del fichero y
+que esto podría provocar una confusión en el futuro.
+
+Aquí tengo dos opciones, o bien puedo cambiar el nombre de la variable o bien puedo
+decirle a pylint que ignore este check.
+
+```python
+df = pd.DataFrame(data=dummy_data) # pylint: disable=redefined-outer-name
+```
+
+Esto lo puedo hacer con `# pylint: disable=redefined-outer-name`.
+
+Tened en cuenta que esto es un arma de doble filo: puedo ignorar todo los warnings
+que me salen de pylint y no me van a salir más errores, así que usad esta herramienta
+con responsabilidad.
+
+Os recomiendo mucho que no os agobiéis con la cantidad de errores y warnings que os 
+pueda sugerir pylint, sobre todo en proyectos grandes.
+
+Podéis empezar por un fichero, escalar a un módulo y posteriormente al proyecto entero.
+
+Lo importante aquí es dejar el código mejor de lo que nos lo hemos encontrado y trabajar
+poco a poco en mejorarlo.
 
 Y nos nos engañemos, si pylint nos reporta que tenemos un código de 10, nos sentimos 
 muy bien.
-
-----
-
-La última herramienta que os traigo se llama `mypy`.
 
 ----
 

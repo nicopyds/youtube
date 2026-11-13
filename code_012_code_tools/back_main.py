@@ -16,14 +16,12 @@ import requests
 
 
 def get_df() -> pd.DataFrame:
-
-   #fmt: off
-   df = pd.DataFrame(
-        data=dummy_data
-    )
-   #fmt: on
-
-   return df
+ 
+    df = pd.DataFrame(
+         data=dummy_data
+     )
+ 
+    return df
 
 df = get_df()
 print(df)
